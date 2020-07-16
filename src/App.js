@@ -4,6 +4,7 @@ import './App.css';
 import SignUp from "./components/SignUp"
 import SignIn from './components/SignIn';
 import HomePage from './components/HomePage';
+import Profile from "./components/Profile"
 
 
 function App() {
@@ -19,6 +20,9 @@ function App() {
           </Route>
           <Route exact path="/signup">
             <SignUp/>
+          </Route>
+          <Route exact path="/profile">
+            <Profile/>
           </Route>
         </Switch>
       </Router>

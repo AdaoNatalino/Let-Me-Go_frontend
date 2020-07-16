@@ -21,7 +21,9 @@ const createNewUser = (userData) => {
       })
         .then((res) => res.json())
         .then((res) => {
+            console.log(res);
           localStorage.setItem("jwt", res.jwt);
+          localStorage.setItem("user", res.user)
           return res;
         })
 }
@@ -38,7 +40,7 @@ const logInUser = (userData) => {
       .then((res) => res.json())
       .then((res) => {
         localStorage.setItem("jwt", res.jwt);
-    
+        localStorage.setItem("user", res.user)
         return res;
       })
 }

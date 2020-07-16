@@ -10,6 +10,8 @@ import Grid from '@material-ui/core/Grid';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
+import API from '../API';
+
 
 function Copyright() {
   return (
@@ -65,18 +67,14 @@ export default function SignIn() {
     e.preventDefault();
     const userData = { username, password }
     console.log(userData);
+    API.logInUser(userData);
     clearForm();
   };
 
   const clearForm = () => {
-      console.log("hello");
-    // setFullName(""), 
-    // setEmail(""), 
-    // setUsername(""), 
-    // setPassword(""), 
-    // setCity(""), 
-    // setAvatar(""), 
-    // setBio("");
+    console.log("hello");
+    setUsername("") 
+    setPassword("") 
   }
 
   return (
