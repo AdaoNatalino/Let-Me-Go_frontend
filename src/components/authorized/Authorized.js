@@ -3,9 +3,9 @@ import { Switch, Route } from "react-router-dom";
 
 import Button from '@material-ui/core/Button';
 
-
 import HomePage from "./HomePage"
 import Profile from "./Profile"
+import NotFound404 from "../NotFound404"
 
 
 export default function Authorized ({ logOut }) {
@@ -28,6 +28,9 @@ export default function Authorized ({ logOut }) {
                 <Profile
                     // user={user}
                     />
+            </Route>
+            <Route path="*">
+                <NotFound404 />
             </Route>
         </Switch>        
     )
