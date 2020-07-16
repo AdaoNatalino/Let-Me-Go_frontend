@@ -13,9 +13,12 @@ function App() {
 
   const [user, setUser] = useState(null)
   
-  // useEffect(() => {
-  //   if (localStorage.getItem('jwt')) API.validateToken().then(handlePostAuth)
-  // }, [])
+  useEffect(() => localStorage.getItem('jwt') ? API.validateToken().then(user => handlePostAuth(user)) : null,  [])
+
+  const logOut = () => {
+    localStorage.removeItem("jwt");
+    setUser(null)
+  }
 
   const handlePostAuth = (user) => {
     if (user.error) {
@@ -25,6 +28,8 @@ function App() {
     }
   }
   
+
+
   // return user
   // ? <AuthorisedApplication >
 
@@ -35,25 +40,26 @@ function App() {
     <div className="App">
       <Router>
         <Switch>
-          {
+          {/* {
             user
-            ? <>
+            ? <> */}
               <Route exact path="/">
                 <HomePage/>
               </Route>
               <Route exact path="/profile">
                 <Profile user={user}/>
               </Route>
-            </>
-            : <>
-              <Route exact path="/">
-                <SignIn/>
+            {/* </> */}
+            {/* : <> */}
+              <Route exact path="/login">
+                <SignIn 
+                logout={logOut}/>
               </Route>
               <Route exact path="/signup">
                 <SignUp/>
               </Route>
-            </>
-          }
+            {/* </>
+          } */}
           <Route path="*">
             <NotFound404 />
           </Route>

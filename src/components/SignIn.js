@@ -10,6 +10,9 @@ import Grid from '@material-ui/core/Grid';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
+import { Redirect } from "react-router-dom";
+
+
 import API from '../API';
 
 
@@ -57,7 +60,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function SignIn() {
+export default function SignIn({ logout, configUser }) {
   const classes = useStyles();
 
   const [username, setUsername] = useState("")
@@ -66,15 +69,14 @@ export default function SignIn() {
   const handleSignIn = (e) => {
     e.preventDefault();
     const userData = { username, password }
-    console.log(userData);
-    API.logInUser(userData);
+    API.logInUser(userData)
     clearForm();
   };
 
   const clearForm = () => {
-    console.log("hello");
     setUsername("") 
     setPassword("") 
+    return <Redirect to="/"/>
   }
 
   return (
@@ -136,6 +138,16 @@ export default function SignIn() {
           </form>
         </div>
       </Grid>
+      <Button   
+              onClick={logout}
+              type="submit"
+              fullWidth
+              variant="contained"
+              color="primary"
+              className={classes.submit}
+            >
+              Log out
+            </Button>
     </Grid>
   );
 }

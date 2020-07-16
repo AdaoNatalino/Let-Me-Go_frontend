@@ -1,14 +1,12 @@
 const URL = `http://localhost:3001/`
 
-const getAllBeers = () => {
-    return fetch(URL)
-    .then(resp => resp.json())
-    .catch(error => console.log(error))
-}
+// const getAllBeers = () => {
+//     return fetch(URL)
+//     .then(resp => resp.json())
+//     .catch(error => console.log(error))
+// }
 
 const getToken = () => localStorage.getItem("jwt");
-
-// const getUser = () => JSON.parse(atob(this.getToken().split(".")[1]));
 
 const createNewUser = (userData) => {
     fetch(URL + "users", {
@@ -59,8 +57,8 @@ const validateToken = () => {
             Authorization: `Bearer ${ getToken() }`,
         }
     })
-    .then((res) => res.json())
-
+    .then(res => res.json())
 }
 
-export default { getAllBeers, createNewUser, logInUser, getUserProfile, validateToken }  
+
+export default { createNewUser, logInUser, getUserProfile, validateToken }  

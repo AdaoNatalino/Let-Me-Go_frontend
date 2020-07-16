@@ -61,13 +61,11 @@ export default function SignUp() {
   const handleSignUp = (e) => {
     e.preventDefault();
     const userData = { fullName, email, username, password, city, avatar, bio }
-    console.log(userData);
     API.createNewUser(userData);
     clearForm();
   };
 
   const clearForm = () => {
-      console.log("hello");
     setFullName("")
     setEmail("")
     setUsername("")
