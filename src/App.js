@@ -17,14 +17,9 @@ function App() {
     if (localStorage.getItem('jwt')) 
     API.validateToken().then(user => handlePostAuth(user))
   }, [])
-  
-  const handlePostAuth = (user) => {
-    if (user.error) {
-      alert(user.error)
-    } else {
-      setUser(user)
-    }
-  }
+
+ 
+  const handlePostAuth = (user) => user.error ? alert(user.error) : setUser(user)
 
   const logOut = () => {
     localStorage.removeItem("jwt");

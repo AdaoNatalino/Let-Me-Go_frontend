@@ -41,15 +41,15 @@ const logInUser = (userData) => {
       })
 }
 
-const getUserProfile = () => {
-  fetch(URL + "profile", {
-    headers: {
-      Authorization: `Bearer ${ getToken() }`,
-    },
-  })
-    .then((res) => res.json())
-    .then(console.log);
-};
+// export me if u need to use!!! const getUserProfile = () => {
+//   fetch(URL + "profile", {
+//     headers: {
+//       Authorization: `Bearer ${ getToken() }`,
+//     },
+//   })
+//     .then((res) => res.json())
+//     .then(console.log);
+// };
 
 const validateToken = () => {
     return fetch(URL + "validate", {
@@ -61,4 +61,4 @@ const validateToken = () => {
 }
 
 
-export default { createNewUser, logInUser, getUserProfile, validateToken }  
+export default { createNewUser, logInUser, validateToken }  

@@ -161,7 +161,7 @@ export default function SignUp() {
                 required
                 fullWidth
                 name="avatar"
-                label="Avatar"
+                label="Avatar URL"
                 type="avatar"
                 id="avatar"
                 autoComplete="avatar"

@@ -10,7 +10,7 @@ import Grid from '@material-ui/core/Grid';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
-import { useHistory } from "react-router-dom";
+import { useHistory, Redirect } from "react-router-dom";
 
 
 import API from "../../API";
@@ -66,7 +66,6 @@ export default function SignIn() {
   const [username, setUsername] = useState("")
   const [password, setPassword] = useState("")
   
-  let history = useHistory();
 
   const handleSignIn = (e) => {
     e.preventDefault();
@@ -76,9 +75,14 @@ export default function SignIn() {
     redirectAfterLogIn();
   };
 
-  const redirectAfterLogIn = () => {
-    history.push("/")
-  }
+  // let history = useHistory();
+
+
+  // const redirectAfterLogIn = () => {
+  //   history.push("/")
+  // }
+
+  const redirectAfterLogIn = () => <Redirect to="/"/>
 
   const clearForm = () => {
     setUsername("") 
