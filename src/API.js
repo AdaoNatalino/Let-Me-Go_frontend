@@ -8,10 +8,10 @@ const getAllBeers = () => {
 
 const getToken = () => localStorage.getItem("jwt");
 
-const getUser = () => JSON.parse(atob(this.getToken().split(".")[1]));
+// const getUser = () => JSON.parse(atob(this.getToken().split(".")[1]));
 
 const createNewUser = (userData) => {
-    fetch("http://localhost:3001/users", {
+    fetch(URL + "users", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -23,13 +23,12 @@ const createNewUser = (userData) => {
         .then((res) => {
             console.log(res);
           localStorage.setItem("jwt", res.jwt);
-          localStorage.setItem("user", res.user)
           return res;
         })
 }
 
 const logInUser = (userData) => {
-  fetch("http://localhost:3001/login", {
+  fetch(URL + `login`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -40,19 +39,28 @@ const logInUser = (userData) => {
       .then((res) => res.json())
       .then((res) => {
         localStorage.setItem("jwt", res.jwt);
-        localStorage.setItem("user", res.user)
         return res;
       })
 }
 
 const getUserProfile = () => {
-  fetch("http://localhost:3001/profile", {
+  fetch(URL + "profile", {
     headers: {
-      Authorization: `Bearer ${getToken()}`,
+      Authorization: `Bearer ${ getToken() }`,
     },
   })
     .then((res) => res.json())
     .then(console.log);
 };
 
-export default { getAllBeers, createNewUser, logInUser, getUserProfile, getUser }  
+const validateToken = () => {
+    return fetch(URL + "validate", {
+        headers: {
+            Authorization: `Bearer ${ getToken() }`,
+        }
+    })
+    .then((res) => res.json())
+
+}
+
+export default { getAllBeers, createNewUser, logInUser, getUserProfile, validateToken }  
