@@ -24,6 +24,9 @@ function App() {
           <Route exact path="/profile">
             <Profile/>
           </Route>
+          <Route path="*">
+            <HomePage />
+          </Route>
         </Switch>
       </Router>
     </div>
