@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
-import SignUp from "./components/SignUp"
-import SignIn from './components/SignIn';
-import HomePage from './components/HomePage';
-import Profile from "./components/Profile"
+import Authorized from './components/authorized/Authorized';
+import Unauthorized from './components/unauthorized/Unauthorized';
+import NotFound404 from "./components/NotFound404"
+
 
 import API from './API'
 import './App.css';
@@ -13,13 +13,11 @@ function App() {
 
   const [user, setUser] = useState(null)
   
-  useEffect(() => localStorage.getItem('jwt') ? API.validateToken().then(user => handlePostAuth(user)) : null,  [])
-
-  const logOut = () => {
-    localStorage.removeItem("jwt");
-    setUser(null)
-  }
-
+  useEffect(() => {
+    if (localStorage.getItem('jwt')) 
+    API.validateToken().then(user => handlePostAuth(user))
+  }, [])
+  
   const handlePostAuth = (user) => {
     if (user.error) {
       alert(user.error)
@@ -27,39 +25,23 @@ function App() {
       setUser(user)
     }
   }
-  
 
-
-  // return user
-  // ? <AuthorisedApplication >
-
-  //   </AuthorisedApplication>
-  // : <LoginSignUpContainer />
+  const logOut = () => {
+    localStorage.removeItem("jwt");
+    setUser(null)
+  }
 
   return (
     <div className="App">
       <Router>
         <Switch>
-          {/* {
-            user
-            ? <> */}
-              <Route exact path="/">
-                <HomePage/>
-              </Route>
-              <Route exact path="/profile">
-                <Profile user={user}/>
-              </Route>
-            {/* </> */}
-            {/* : <> */}
-              <Route exact path="/login">
-                <SignIn 
-                logout={logOut}/>
-              </Route>
-              <Route exact path="/signup">
-                <SignUp/>
-              </Route>
-            {/* </>
-          } */}
+          { user
+          ? <Authorized 
+          logOut={logOut}
+          />
+          : <Unauthorized
+          /> 
+        }
           <Route path="*">
             <NotFound404 />
           </Route>
@@ -69,8 +51,5 @@ function App() {
   );
 }
 
-const NotFound404 = () => {
-  return <h4>404 Not Found: The page you are trying to access does not exist</h4>
-}
 
 export default App;

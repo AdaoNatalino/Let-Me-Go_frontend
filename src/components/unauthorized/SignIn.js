@@ -10,10 +10,10 @@ import Grid from '@material-ui/core/Grid';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
-import { Redirect } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 
-import API from '../API';
+import API from "../../API";
 
 
 function Copyright() {
@@ -60,23 +60,29 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function SignIn({ logout, configUser }) {
+export default function SignIn() {
   const classes = useStyles();
 
   const [username, setUsername] = useState("")
   const [password, setPassword] = useState("")
+  
+  let history = useHistory();
 
   const handleSignIn = (e) => {
     e.preventDefault();
     const userData = { username, password }
     API.logInUser(userData)
     clearForm();
+    redirectAfterLogIn();
   };
+
+  const redirectAfterLogIn = () => {
+    history.push("/")
+  }
 
   const clearForm = () => {
     setUsername("") 
     setPassword("") 
-    return <Redirect to="/"/>
   }
 
   return (
@@ -138,16 +144,6 @@ export default function SignIn({ logout, configUser }) {
           </form>
         </div>
       </Grid>
-      <Button   
-              onClick={logout}
-              type="submit"
-              fullWidth
-              variant="contained"
-              color="primary"
-              className={classes.submit}
-            >
-              Log out
-            </Button>
     </Grid>
   );
 }
