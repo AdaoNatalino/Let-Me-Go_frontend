@@ -9,7 +9,7 @@ const URL = `http://localhost:3001/`
 const getToken = () => localStorage.getItem("jwt");
 
 const createNewUser = (userData) => {
-    fetch(URL + "users", {
+    return fetch(URL + "users", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -19,7 +19,7 @@ const createNewUser = (userData) => {
       })
         .then((res) => res.json())
         .then((res) => {
-            console.log(res);
+            // console.log(res);
           localStorage.setItem("jwt", res.jwt);
           return res;
         })
@@ -40,16 +40,6 @@ const logInUser = (userData) => {
         return res;
       })
 }
-
-// export me if u need to use!!! const getUserProfile = () => {
-//   fetch(URL + "profile", {
-//     headers: {
-//       Authorization: `Bearer ${ getToken() }`,
-//     },
-//   })
-//     .then((res) => res.json())
-//     .then(console.log);
-// };
 
 const validateToken = () => {
     return fetch(URL + "validate", {

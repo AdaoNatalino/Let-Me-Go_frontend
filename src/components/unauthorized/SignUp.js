@@ -10,9 +10,10 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
+import { useHistory } from "react-router-dom";
+
+
 import API from '../../API';
-
-
 
 function Copyright() {
   return (
@@ -47,10 +48,10 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function SignUp() {
+export default function SignUp({ handlePostAuth }) {
   const classes = useStyles();
 
-  const [fullName, setFullName] = useState("")
+  const [name, setName] = useState("")
   const [email, setEmail] = useState("")
   const [username, setUsername] = useState("")
   const [password, setPassword] = useState("")
@@ -58,15 +59,20 @@ export default function SignUp() {
   const [avatar, setAvatar] = useState("")
   const [bio, setBio] = useState("")
 
+  let history = useHistory();
+
   const handleSignUp = (e) => {
     e.preventDefault();
-    const userData = { fullName, email, username, password, city, avatar, bio }
-    API.createNewUser(userData);
+    const userData = { name, email, username, password, city, avatar, bio }
+    console.log(userData)
+    history.push('/')
+    API.createNewUser(userData)
+    .then(handlePostAuth)
     clearForm();
   };
 
   const clearForm = () => {
-    setFullName("")
+    setName("")
     setEmail("")
     setUsername("")
     setPassword("")
@@ -90,8 +96,8 @@ export default function SignUp() {
         <form className={classes.form} noValidate onSubmit={ handleSignUp }>
           <Grid container spacing={2}>
             <Grid item xs={12}>
-              <TextField onChange={ (e) => setFullName(e.target.value) }
-                value={fullName}
+              <TextField onChange={ (e) => setName(e.target.value) }
+                value={name}
                 autoComplete="fname"
                 name="fullName"
                 variant="outlined"

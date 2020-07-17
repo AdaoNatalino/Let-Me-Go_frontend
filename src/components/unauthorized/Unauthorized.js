@@ -17,7 +17,9 @@ export default function Unauthorized ({ handlePostAuth }) {
                 />
             </Route>
             <Route exact path="/signup">
-                <SignUp/>
+                <SignUp
+                handlePostAuth={handlePostAuth}
+                />
             </Route>
             <Route path="*">
                 <NotFound404 />
