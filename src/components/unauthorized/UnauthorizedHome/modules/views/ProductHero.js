@@ -10,7 +10,7 @@ const backgroundImage =
 const styles = (theme) => ({
   background: {
     backgroundImage: `url(${backgroundImage})`,
-    backgroundColor: '#7fc7d9', // Average color of the background image.
+    backgroundColor: '#7fc7d9', 
     backgroundPosition: 'center',
   },
   button: {
@@ -33,14 +33,13 @@ function ProductHero(props) {
 
   return (
     <ProductHeroLayout backgroundClassName={classes.background}>
-      {/* Increase the network loading priority of the background image. */}
       <img
         style={{ display: 'none' }}
         src={backgroundImage}
         alt="increase priority"
       />
       <Typography color="inherit" align="center" variant="h2" marked="center">
-        Upgrade your Sundays
+        Trading Good for Amazing!
       </Typography>
       <Typography
         color="inherit"
@@ -48,10 +47,10 @@ function ProductHero(props) {
         variant="h5"
         className={classes.h5}
       >
-        Enjoy secret offers up to -70% off the best luxury hotels every Sunday.
+        The right place for you to get rid of things you don't want anymore!.
       </Typography>
      
-      <Typography variant="body2" color="inherit" className={classes.more}>
+      <Typography variant="h6" color="inherit" className={classes.more}>
         Discover the experience
       </Typography>
     </ProductHeroLayout>
