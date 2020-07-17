@@ -43,7 +43,6 @@ function App() {
             logOut={logOut}
           />
           : <Unauthorized
-            user={user}
             handlePostAuth={handlePostAuth}
           /> 
         }

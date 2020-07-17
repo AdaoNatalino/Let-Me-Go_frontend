@@ -8,9 +8,7 @@ import AppAppBar from './modules/views/AppAppBar';
 function Index({ user }) {
   return (
     <React.Fragment>
-      <AppAppBar
-      user={user}
-      />
+      <AppAppBar user={user}/>
       <ProductHero />
       { user  ? <ProductCategories /> : null }
     </React.Fragment>
