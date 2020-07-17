@@ -1,10 +1,10 @@
 const URL = `http://localhost:3001/`
 
-// const getAllBeers = () => {
-//     return fetch(URL)
-//     .then(resp => resp.json())
-//     .catch(error => console.log(error))
-// }
+const getAllItems = () => {
+    return fetch(URL + "items")
+    .then(resp => resp.json())
+    .catch(error => console.log(error))
+}
 
 const getToken = () => localStorage.getItem("jwt");
 
@@ -51,4 +51,4 @@ const validateToken = () => {
 }
 
 
-export default { createNewUser, logInUser, validateToken }  
+export default { createNewUser, logInUser, validateToken, getAllItems }  

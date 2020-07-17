@@ -11,7 +11,7 @@ export default function Unauthorized ({ handlePostAuth }) {
     return (
         <div>
         <Switch>
-            <Route exact path="/">
+            <Route exact path="/login">
                 <SignIn
                 handlePostAuth={handlePostAuth}
                 />
