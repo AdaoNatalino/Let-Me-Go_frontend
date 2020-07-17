@@ -26,7 +26,7 @@ const createNewUser = (userData) => {
 }
 
 const logInUser = (userData) => {
-  fetch(URL + `login`, {
+  return fetch(URL + `login`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

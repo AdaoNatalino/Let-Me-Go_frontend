@@ -19,7 +19,14 @@ function App() {
   }, [])
 
  
-  const handlePostAuth = (user) => user.error ? alert(user.error) : setUser(user)
+  const handlePostAuth = (userInfo) => {
+    if (userInfo.error) {
+      alert(userInfo.error)
+    } else {
+      setUser(userInfo.user)
+      if (userInfo.jwt) localStorage.setItem('jwt', userInfo.jwt)
+    } 
+  }
 
   const logOut = () => {
     localStorage.removeItem("jwt");
@@ -32,9 +39,10 @@ function App() {
         <Switch>
           { user
           ? <Authorized 
-          logOut={logOut}
+            logOut={logOut}
           />
           : <Unauthorized
+            handlePostAuth={handlePostAuth}
           /> 
         }
           <Route path="*">

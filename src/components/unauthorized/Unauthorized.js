@@ -6,13 +6,15 @@ import SignUp from "./SignUp"
 import NotFound404 from "../NotFound404"
 
 
-export default function Unauthorized () {
+export default function Unauthorized ({ handlePostAuth }) {
     
     return (
         <div>
         <Switch>
             <Route exact path="/">
-                <SignIn/>
+                <SignIn
+                handlePostAuth={handlePostAuth}
+                />
             </Route>
             <Route exact path="/signup">
                 <SignUp/>
