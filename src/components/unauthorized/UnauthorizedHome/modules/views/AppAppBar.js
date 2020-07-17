@@ -48,7 +48,7 @@ function AppAppBar(props) {
             underline="none"
             color="inherit"
             className={classes.title}
-            href="/premium-themes/onepirate/"
+            href="/"
           >
             {'Let me Go!'}
           </Link>

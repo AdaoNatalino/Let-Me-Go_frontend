@@ -3,15 +3,14 @@ import { Switch, Route } from "react-router-dom";
 
 import Button from '@material-ui/core/Button';
 
-import HomePage from "./HomePage"
 import Profile from "./Profile"
 import NotFound404 from "../NotFound404"
 import ItemsContainer from './ItemsContainer';
-import Oni from "./onepirate/Home"
+import Home from "../unauthorized/UnauthorizedHome/Home"
 import API from "../../API"
 
 
-export default function Authorized ({ logOut }) {
+export default function Authorized ({ logOut, user }) {
 
     const [items, setItems] = useState([])
 
@@ -22,7 +21,9 @@ export default function Authorized ({ logOut }) {
     return (
         <Switch>
             <Route exact path="/">
-                <Oni/>
+                <Home
+                user={user}
+                />
                 <Button   
                     onClick={logOut}
                     type="submit"

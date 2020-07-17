@@ -4,13 +4,19 @@ import { Switch, Route } from "react-router-dom";
 import SignIn from "./SignIn"
 import SignUp from "./SignUp"
 import NotFound404 from "../NotFound404"
+import Home from "./UnauthorizedHome/Home"
 
 
-export default function Unauthorized ({ handlePostAuth }) {
+export default function Unauthorized ({ handlePostAuth, user }) {
     
     return (
         <div>
         <Switch>
+            <Route exact path="/">
+                <Home
+                user={user}
+                />
+            </Route>
             <Route exact path="/login">
                 <SignIn
                 handlePostAuth={handlePostAuth}

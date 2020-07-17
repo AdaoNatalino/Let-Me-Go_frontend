@@ -10,6 +10,8 @@ import Grid from '@material-ui/core/Grid';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
+import { useHistory } from "react-router-dom";
+
 
 
 import API from "../../API";
@@ -51,7 +53,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: theme.palette.secondary.main,
   },
   form: {
-    width: '100%', // Fix IE 11 issue.
+    width: '100%', 
     marginTop: theme.spacing(1),
   },
   submit: {
@@ -65,10 +67,13 @@ export default function SignIn({ handlePostAuth }) {
   const [username, setUsername] = useState("")
   const [password, setPassword] = useState("")
   
+  let history = useHistory();
+
 
   const handleSignIn = (e) => {
     e.preventDefault();
     const userData = { username, password }
+    history.push('/')
     API.logInUser(userData)
     .then(handlePostAuth)
 

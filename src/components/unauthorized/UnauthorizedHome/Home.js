@@ -5,12 +5,14 @@ import ProductCategories from './modules/views/ProductCategories';
 import ProductHero from './modules/views/ProductHero';
 import AppAppBar from './modules/views/AppAppBar';
 
-function Index() {
+function Index({ user }) {
   return (
     <React.Fragment>
-      <AppAppBar />
+      <AppAppBar
+      user={user}
+      />
       <ProductHero />
-      <ProductCategories />
+      { user  ? <ProductCategories /> : null }
     </React.Fragment>
   );
 }

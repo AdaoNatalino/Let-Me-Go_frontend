@@ -39,9 +39,11 @@ function App() {
         <Switch>
           { user
           ? <Authorized 
+            user={user}
             logOut={logOut}
           />
           : <Unauthorized
+            user={user}
             handlePostAuth={handlePostAuth}
           /> 
         }
