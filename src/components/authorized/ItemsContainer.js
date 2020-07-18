@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react'
 
+import API from "../../API"
+
 export default function ItemsContainer(props) {
 
     const [items, setItems] = useState([])
 
     useEffect(() => {
-        fetch(`/category/${props.match.params.category}`)
+        API.getChosenCategory(props.match.params.category)
         .then( categoryItems => setItems(categoryItems) )
     }, [])
 

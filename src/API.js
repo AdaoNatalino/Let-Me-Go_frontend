@@ -1,7 +1,26 @@
 const URL = `http://localhost:3001/`
 
+// authorizedFetch("someURL", {
+//   method: "PATCH",
+//   headers: {
+//     "Content-Type": "application/json",
+//   },
+//   body: JSON.stringify({ key: "value" }),
+// })
+
+const authorizedFetch = (url, options = {}) => {
+  return fetch(url, {
+    method: options.method,
+    headers: {
+      ...options.headers,
+      Authorization: `Bearer ${getToken()}`,
+    },
+    body: options.body,
+  })
+}
+
 const getAllItems = () => {
-    return fetch(URL + "items")
+    return authorizedFetch(URL + "items")
     .then(resp => resp.json())
     .catch(error => console.log(error))
 }
@@ -50,5 +69,17 @@ const validateToken = () => {
     .then(res => res.json())
 }
 
+// used to create buttons
+const getAllCategories = () => {
+  return authorizedFetch(URL + "categories")
+  .then(resp => resp.json())
+  .catch(error => console.log(error))
+}
 
-export default { createNewUser, logInUser, validateToken, getAllItems }  
+const getChosenCategory = (categoryName) => {
+  return authorizedFetch(URL + "categories/" + categoryName)
+  .then(resp => resp.json())
+  .catch(error => console.log(error))
+}
+
+export default { createNewUser, logInUser, validateToken, getAllItems, getAllCategories, getChosenCategory }  
