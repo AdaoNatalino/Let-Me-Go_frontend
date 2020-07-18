@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 
+import ItemCard from "./ItemCard"
 import API from "../../API"
 
 export default function ItemsContainer(props) {
@@ -11,9 +12,11 @@ export default function ItemsContainer(props) {
         .then( categoryItems => setItems(categoryItems) )
     }, [])
 
+    const renderItems = () => items.map(item => <ItemCard key={item.id} item={item}/>)
+
     return (
         <div>
-            items
+            {renderItems()}
         </div>
     )
 }

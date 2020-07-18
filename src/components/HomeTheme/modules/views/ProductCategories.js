@@ -98,63 +98,6 @@ function ProductCategories(props) {
   },[])
 
 
-  // const images = [
-  //   {
-  //     url:
-  //       'https://static.kent.ac.uk/nexus/ems/960.jpg',
-  //     title: 'Electronics',
-  //     width: '40%',
-  //   },
-  //   {
-  //     url:
-  //       'https://www.focus2move.com/wp-content/uploads/2020/05/Seat-Cupra_Leon_Competicion-2020.jpg',
-  //     title: 'Autos',
-  //     width: '20%',
-  //   },
-  //   {
-  //     url:
-  //       'https://i.ytimg.com/vi/NUUeGianTKM/maxresdefault.jpg',
-  //     title: 'Electric',
-  //     width: '40%',
-  //   },
-  //   {
-  //     url:
-  //       'https://www.borgonovo1930.com/e/images/home/fimar-mobili-2.jpg',
-  //     title: 'Furniture',
-  //     width: '38%',
-  //   },
-  //   {
-  //     url:
-  //       'https://images.pushsquare.com/d258d2ab5b78a/the-last-of-us-2-guide.original.jpg',
-  //     title: 'Games',
-  //     width: '38%',
-  //   },
-  //   {
-  //     url:
-  //       'https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/blakes-london-kitchen-1579780869.jpg?crop=0.607xw:0.933xh;0.295xw,0.0394xh&resize=640:*',
-  //     title: 'Home and Kitchen ',
-  //     width: '24%',
-  //   },
-  //   {
-  //     url:
-  //       'https://www.fairwayfurniture.co.uk/images/products/standard/13735.jpg',
-  //     title: 'Clothing',
-  //     width: '40%',
-  //   },
-  //   {
-  //     url:
-  //       'https://www.expatica.com/app/uploads/sites/2/2019/11/Health-Insurance-Quotes-1920x1080.jpg',
-  //     title: 'Health',
-  //     width: '20%',
-  //   },
-  //   {
-  //     url:
-  //       'https://i2-prod.belfastlive.co.uk/incoming/article18292338.ece/ALTERNATES/s1200d/0_Seasonal-Sports-Equipment-Storage-1024x668.jpg',
-  //     title: 'Sports',
-  //     width: '40%',
-  //   },
-  // ];
-
   return (
     <Container className={classes.root} component="section">
       <Typography variant="h4" marked="center" align="center" component="h2">
