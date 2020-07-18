@@ -4,7 +4,7 @@ import { Switch, Route } from "react-router-dom";
 import SignIn from "./SignIn"
 import SignUp from "./SignUp"
 import NotFound404 from "../NotFound404"
-import Home from "./UnauthorizedHome/Home"
+import Home from "../HomeTheme/Home"
 import UnAuthMenu from "./UnAuthMenu"
 
 

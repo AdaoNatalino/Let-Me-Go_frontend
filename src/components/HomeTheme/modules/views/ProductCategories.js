@@ -4,6 +4,8 @@ import { withStyles } from '@material-ui/core/styles';
 import ButtonBase from '@material-ui/core/ButtonBase';
 import Container from '@material-ui/core/Container';
 import Typography from '../components/Typography';
+import { useHistory } from "react-router-dom";
+
 
 const styles = (theme) => ({
   root: {
@@ -85,6 +87,8 @@ const styles = (theme) => ({
 
 function ProductCategories(props) {
   const { classes } = props;
+  let history = useHistory();
+
 
   const images = [
     {
@@ -151,7 +155,10 @@ function ProductCategories(props) {
       <div className={classes.images}>
         {images.map((image) => (
           <ButtonBase
-            onClick={() => console.log(image.title)}
+            onClick={() => {
+              history.push(`/items/${image.title}`)
+
+            }}
             key={image.title}
             className={classes.imageWrapper}
             style={{
