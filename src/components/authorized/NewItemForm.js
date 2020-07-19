@@ -54,7 +54,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function NewItemForm({ }) {
+export default function NewItemForm({ user }) {
   const classes = useStyles();
 
   const [name, setName] = useState("")
@@ -62,7 +62,7 @@ export default function NewItemForm({ }) {
   const [condition, setCondition] = useState("")
   const [category_id, setCategory_id] = useState("")
   const [image, setImage] = useState("")
-
+  const user_id = user.id  
   const [categories, setCategories] = useState([])
 
 
@@ -75,10 +75,10 @@ export default function NewItemForm({ }) {
 
   const handleUploadItem = (e) => {
     e.preventDefault();
-    const userData = { name, description, condition, category_id, image }
-    console.log(userData)
-    history.push('/')
-    API.createNewUser(userData)
+    const itemData = { name, description, condition, category_id, image, user_id }
+    console.log(itemData)
+    // history.push('/profile')
+    API.createNewItem(itemData)
     clearForm();
   };
 
@@ -92,7 +92,7 @@ export default function NewItemForm({ }) {
   }
 //   <option value={10}>Ten</option>
 
-  const categoriesOptions = () =>  categories.map(cat => <option value={cat.id}>{cat.title}</option> )
+  const categoriesOptions = () =>  categories.map(cat => <option key={cat.id} value={cat.id}>{cat.title}</option> )
 
   return (
     <Container component="main" maxWidth="xs">
@@ -129,6 +129,19 @@ export default function NewItemForm({ }) {
                 fullWidth
                 id="Description"
                 label="Description"
+                autoFocus
+              />
+            </Grid>
+            <Grid item xs={12}>
+              <TextField onChange={ (e) => setCondition(e.target.value) }
+                value={condition}
+                autoComplete="condition"
+                name="Condition"
+                variant="outlined"
+                required
+                fullWidth
+                id="Condition"
+                label="Condition"
                 autoFocus
               />
             </Grid>

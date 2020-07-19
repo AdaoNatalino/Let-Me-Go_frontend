@@ -31,7 +31,9 @@ export default function Authorized ({ logOut, user }) {
                     />
                 </Route>
                 <Route exact path="/newItem">
-                    <NewItemForm />
+                    <NewItemForm
+                    user={user}
+                    />
                 </Route>
                 <Route exact path="/profile">
                     <Profile

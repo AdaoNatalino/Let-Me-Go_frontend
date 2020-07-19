@@ -82,4 +82,40 @@ const getChosenCategory = (categoryName) => {
   .catch(error => console.log(error))
 }
 
-export default { createNewUser, logInUser, validateToken, getAllItems, getAllCategories, getChosenCategory }  
+const configObject = (request, key, data) => {
+  const obj = {
+    method: request,
+    headers: {
+      "Content-Type": "application/json",
+      Accept: "application/json",
+    },
+    body: JSON.stringify({ key: data }),
+  }
+  return obj
+}
+
+const createNewItem = (itemData) => {
+  // const obj = configObject("POST", "item", itemData)
+  // console.log(obj)
+  // return authorizedFetch(URL + 'items', obj)
+  // .then(resp => resp.json()).
+  // catch(error => console.log(error))
+  return authorizedFetch(URL + "items", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Accept: "application/json",
+    },
+    body: JSON.stringify({ item: itemData }),
+  })
+    .then((res) => res.json())
+    .then((res) => {
+        console.log(res);
+      // localStorage.setItem("jwt", res.jwt);
+      return res;
+    })
+}
+
+export default { 
+  createNewUser, logInUser, validateToken, getAllItems, getAllCategories, getChosenCategory, createNewItem 
+}  
