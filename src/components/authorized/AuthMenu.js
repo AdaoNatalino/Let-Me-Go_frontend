@@ -1,4 +1,7 @@
 import React from 'react';
+import { useHistory } from "react-router-dom";
+
+
 import { fade, makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -85,6 +88,8 @@ export default function PrimarySearchAppBar({ logOut }) {
 
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
+  let history = useHistory();
+
 
   const handleProfileMenuOpen = (event) => {
     setAnchorEl(event.currentTarget);
@@ -116,6 +121,7 @@ export default function PrimarySearchAppBar({ logOut }) {
     >
       <MenuItem onClick={() => {
         handleMenuClose()
+        history.push("/profile")
         }}
         >Profile </MenuItem>
       <MenuItem onClick={() => {
