@@ -19,7 +19,8 @@ export default function Authorized ({ logOut, user }) {
    
     return (
         <>
-            <AuthMenu 
+            <AuthMenu
+            user={user} 
             logOut={logOut}
             />
             <Switch>

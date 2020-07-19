@@ -1,7 +1,18 @@
 import React, { useState, useEffect } from 'react'
+import { Grid } from '@material-ui/core';
+import { makeStyles } from '@material-ui/core/styles';
+
 
 import ItemCard from "./ItemCard"
-import API from "../../API"
+import API from "../../API" 
+
+const useStyles = makeStyles({
+    gridContainer: {
+        paddingLeft: "20px",
+        paddingRight: "20px",
+        paddingTop: "20px"
+    }
+})
 
 export default function ItemsContainer(props) {
 
@@ -12,11 +23,19 @@ export default function ItemsContainer(props) {
         .then( categoryItems => setItems(categoryItems) )
     }, [])
 
-    const renderItems = () => items.map(item => <ItemCard key={item.id} item={item}/>)
+    const renderItems = () => items.map(item => {
+        return(
+            <Grid key={item.name} item xs={12} sm={6} md={4}>
+                <ItemCard key={item.id} item={item}/>
+            </Grid>   
+        )
+    })
 
+    const classes = useStyles();
+    
     return (
-        <div>
-            {renderItems()}
-        </div>
+        <Grid container spacing={4} className={classes.gridContainer}>
+            { renderItems() }
+        </Grid>
     )
 }
