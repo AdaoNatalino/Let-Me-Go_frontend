@@ -8,6 +8,7 @@ import NotFound404 from "./components/NotFound404"
 import API from './API'
 import './App.css';
 
+
 function App() {
 
   const [user, setUser] = useState(null)
@@ -16,7 +17,6 @@ function App() {
     if (localStorage.getItem('jwt')) 
     API.validateToken().then(user => handlePostAuth(user))
   }, [])
-
  
   const handlePostAuth = (userInfo) => {
     if (userInfo.error) {

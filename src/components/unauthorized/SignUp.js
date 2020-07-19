@@ -12,7 +12,6 @@ import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import { useHistory } from "react-router-dom";
 
-
 import API from '../../API';
 
 function Copyright() {
@@ -80,8 +79,6 @@ export default function SignUp({ handlePostAuth }) {
     setAvatar("")
     setBio("")
   }
-
-
 
   return (
     <Container component="main" maxWidth="xs">

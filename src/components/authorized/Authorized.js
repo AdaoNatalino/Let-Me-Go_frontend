@@ -7,6 +7,7 @@ import ItemsContainer from './ItemsContainer';
 import Home from "../HomeTheme/Home"
 import API from "../../API"
 import AuthMenu from "./AuthMenu"
+import NewItemForm from "./NewItemForm"
 
 
 export default function Authorized ({ logOut, user }) {
@@ -29,6 +30,9 @@ export default function Authorized ({ logOut, user }) {
                     user={user}
                     />
                 </Route>
+                <Route exact path="/newItem">
+                    <NewItemForm />
+                </Route>
                 <Route exact path="/profile">
                     <Profile
                         user={user}
@@ -44,6 +48,7 @@ export default function Authorized ({ logOut, user }) {
                 <Route path="*">
                     <NotFound404 />
                 </Route>
+               
             </Switch>  
         </>      
     )
