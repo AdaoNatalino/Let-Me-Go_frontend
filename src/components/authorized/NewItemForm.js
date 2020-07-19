@@ -65,15 +65,16 @@ export default function NewItemForm({ user }) {
   const user_id = user.id  
   const [categories, setCategories] = useState([])
 
+  const [photo, setPhoto] = useState("")
+  const [loading, setLoading] = useState(false)
 
   let history = useHistory();
-
 
   useEffect(()=>{
     API.getAllCategories().then(cat => setCategories(cat))
   },[])
 
-  const handleUploadItem = (e) => {
+  const handleCreateItem = (e) => {
     e.preventDefault();
     const itemData = { name, description, condition, category_id, image, user_id }
     console.log(itemData)
@@ -90,7 +91,21 @@ export default function NewItemForm({ user }) {
     setImage("")
   
   }
-//   <option value={10}>Ten</option>
+
+  const uploadImage = async e => {
+    const files = e.target.files
+    const data = new FormData()
+    data.append('file', files[0])
+    data.append("upload_preset", "sansonov")
+    setLoading(true)
+    const res = await fetch("https://api.cloudinary.com/v1_1/dgvhmuqlq/image/upload",{
+       method: "POST",
+       body: data 
+    })
+    const file = await res.json()
+    setPhoto(file.secure_url)
+    setLoading(false)
+  }
 
   const categoriesOptions = () =>  categories.map(cat => <option key={cat.id} value={cat.id}>{cat.title}</option> )
 
@@ -104,7 +119,7 @@ export default function NewItemForm({ user }) {
         <Typography component="h1" variant="h5">
           Upload an item for trade!
         </Typography>
-        <form className={classes.form} noValidate onSubmit={ handleUploadItem }>
+        <form className={classes.form} noValidate onSubmit={ handleCreateItem }>
           <Grid container spacing={2}>
             <Grid item xs={12}>
               <TextField onChange={ (e) => setName(e.target.value) }
@@ -175,6 +190,12 @@ export default function NewItemForm({ user }) {
                 autoFocus
               />
             </Grid>
+            <input type="file"
+            name="file"
+            placeholder="Upload a image"
+            onChange={uploadImage}
+            
+            />
             
           </Grid>
           <Button
@@ -195,6 +216,14 @@ export default function NewItemForm({ user }) {
           </Grid>
         </form>
       </div>
+     
+{/* 
+        {loading? (
+            <h3>Loading...</h3>
+        ):(
+            <img src={photo} style={{width: '300px'}}/>
+        )} */}
+
       <Box mt={5}>
         <Copyright />
       </Box>
