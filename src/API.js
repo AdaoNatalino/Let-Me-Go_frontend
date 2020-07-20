@@ -82,17 +82,17 @@ const getChosenCategory = (categoryName) => {
   .catch(error => console.log(error))
 }
 
-const configObject = (request, key, data) => {
-  const obj = {
-    method: request,
-    headers: {
-      "Content-Type": "application/json",
-      Accept: "application/json",
-    },
-    body: JSON.stringify({ [key]: data }),
-  }
-  return obj
-}
+// const configObject = (request, key, data) => {
+//   const obj = {
+//     method: request,
+//     headers: {
+//       "Content-Type": "application/json",
+//       Accept: "application/json",
+//     },
+//     body: JSON.stringify({ [key]: data }),
+//   }
+//   return obj
+// }
 
 const createNewItem = (itemData) => {
   return authorizedFetch(URL + "items", {

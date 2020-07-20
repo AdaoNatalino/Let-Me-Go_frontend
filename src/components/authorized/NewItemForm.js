@@ -218,7 +218,7 @@ export default function NewItemForm({ user }) {
                 {loading? (
                   <h3>Loading...</h3>
                    ):(
-                  <img src={image} style={{width: '250px'}}/>
+                  <img src={image} style={{width: '250px'}} alt=""/>
                   )}
             </Grid>
           </Grid>

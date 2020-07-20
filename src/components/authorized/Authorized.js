@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from 'react'
 import { Switch, Route } from "react-router-dom";
 
-import Profile from "./Profile"
 import NotFound404 from "../NotFound404"
 import ItemsContainer from './ItemsContainer';
 import Home from "../HomeTheme/Home"
 import API from "../../API"
 import AuthMenu from "./AuthMenu"
 import NewItemForm from "./NewItemForm"
+import DashBoard from "./Dashboard"
+import EditProfile from "./EditProfile"
 
 
 export default function Authorized ({ logOut, user }) {
@@ -36,7 +37,8 @@ export default function Authorized ({ logOut, user }) {
                     />
                 </Route>
                 <Route exact path="/profile">
-                    <Profile
+                    <DashBoard
+                        logOut={logOut}
                         user={user}
                         />
                 </Route>
@@ -45,6 +47,15 @@ export default function Authorized ({ logOut, user }) {
                     path="/items/:category" 
                     render={routerProps =>
                         <ItemsContainer {...routerProps}/>
+                    }
+                />
+                <Route 
+                    exact 
+                    path="/edit" 
+                    render={routerProps =>
+                        <EditProfile {...routerProps}
+                        user={user}
+                        />
                     }
                 />
                 <Route path="*">
