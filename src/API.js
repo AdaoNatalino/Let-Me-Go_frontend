@@ -95,12 +95,6 @@ const configObject = (request, key, data) => {
 }
 
 const createNewItem = (itemData) => {
-  // const obj = configObject("POST", "item", itemData)
-  // console.log(obj)
-  // return authorizedFetch(URL + 'items', obj)
-  // .then(resp => resp.json()).
-  // catch(error => console.log(error))
-
   return authorizedFetch(URL + "items", {
     method: "POST",
     headers: {
@@ -112,25 +106,11 @@ const createNewItem = (itemData) => {
     .then((res) => res.json())
     .then((res) => {
         console.log(res);
-      // localStorage.setItem("jwt", res.jwt);
       return res;
     })
 }
 
-// const uploadImage = async e => {
-//   const files = e.target.files
-//   const data = new FormData()
-//   data.append('file', files[0])
-//   data.append("upload_preset", "sansonov")
-//   // setLoading(true)
-//   const res = await fetch("https://api.cloudinary.com/v1_1/dgvhmuqlq/image/upload",{
-//      method: "POST",
-//      body: data 
-//   })
-//   const file = await res.json()
-//   // setImage(file.secure_url)
-//   // setLoading(false)
-// }
+
 
 export default { 
   createNewUser, logInUser, validateToken, getAllItems, getAllCategories, getChosenCategory, 
