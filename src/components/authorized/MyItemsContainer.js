@@ -6,9 +6,9 @@ import MyItemCard from "./MyItemCard"
 
 const useStyles = makeStyles({
     gridContainer: {
-        paddingLeft: "20px",
-        paddingRight: "20px",
-        paddingTop: "20px"
+        paddingLeft: "0px",
+        paddingRight: "0px",
+        paddingTop: "0px"
     }
 })
 
@@ -17,7 +17,7 @@ export default function ItemsContainer( { items }) {
 
     const renderMyItems = () => items.map(item => {
         return(
-            <Grid key={item.name} item xs={12} sm={6} md={3}>
+            <Grid key={item.name} item xs={12} sm={6} md={4}>
                 <MyItemCard key={item.id} item={item}/>
             </Grid>   
         )
@@ -29,7 +29,7 @@ export default function ItemsContainer( { items }) {
         <Grid 
         container spacing={6} 
         justify="center"
-            // className={classes.gridContainer}
+            className={classes.gridContainer}
         >
             { renderMyItems() }
         </Grid>

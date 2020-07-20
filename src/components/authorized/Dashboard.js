@@ -168,7 +168,7 @@ export default function Dashboard({ logOut, user }) {
           >
             Dashboard
           </Typography>
-          <IconButton color="inherit">
+          <IconButton color="inherit" onClick={logOut}>
             
               <ExitToAppIcon />
            
