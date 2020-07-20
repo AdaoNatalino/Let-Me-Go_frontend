@@ -6,6 +6,7 @@ import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
+import Input from '@material-ui/core/Input';
 import Link from '@material-ui/core/Link';
 import Grid from '@material-ui/core/Grid';
 import Box from '@material-ui/core/Box';
@@ -61,11 +62,11 @@ export default function NewItemForm({ user }) {
   const [description, setDescription] = useState("")
   const [condition, setCondition] = useState("")
   const [category_id, setCategory_id] = useState("")
+  const [imageFile, setImageFile] = useState(null)
   const [image, setImage] = useState("")
   const user_id = user.id  
   const [categories, setCategories] = useState([])
 
-  const [photo, setPhoto] = useState("")
   const [loading, setLoading] = useState(false)
 
   let history = useHistory();
@@ -92,19 +93,45 @@ export default function NewItemForm({ user }) {
   
   }
 
-  const uploadImage = async e => {
+ 
+  const updateImage = async e => {
     const files = e.target.files
     const data = new FormData()
     data.append('file', files[0])
     data.append("upload_preset", "sansonov")
+    setImageFile(data)
+    // setLoading(true)
+    // const res = await fetch("https://api.cloudinary.com/v1_1/dgvhmuqlq/image/upload",{
+    //    method: "POST",
+    //    body: data 
+    // })
+    // const file = await res.json()
+    // setImage(file.secure_url)
+    // setLoading(false)
+  }
+
+  // const uploadImage = async () => {
+  //   setLoading(true)
+  //   const res = await fetch("https://api.cloudinary.com/v1_1/dgvhmuqlq/image/upload",{
+  //      method: "POST",
+  //      body: imageFile, 
+  //   })
+  //   const file = await res.json()
+  //   setImage(file.secure_url)
+  //   setLoading(false)
+  // }
+
+  const uploadImage = () => {
     setLoading(true)
-    const res = await fetch("https://api.cloudinary.com/v1_1/dgvhmuqlq/image/upload",{
+    fetch("https://api.cloudinary.com/v1_1/dgvhmuqlq/image/upload",{
        method: "POST",
-       body: data 
+       body: imageFile, 
     })
-    const file = await res.json()
-    setPhoto(file.secure_url)
-    setLoading(false)
+    .then( r => r.json() )
+    .then( file => {
+      setImage(file.secure_url)
+      setLoading(false)
+    })
   }
 
   const categoriesOptions = () =>  categories.map(cat => <option key={cat.id} value={cat.id}>{cat.title}</option> )
@@ -178,25 +205,32 @@ export default function NewItemForm({ user }) {
                 </FormControl>
             </Grid>
             <Grid item xs={12}>
-              <TextField onChange={ (e) => setImage(e.target.value) }
-                value={image}
-                autoComplete="image"
-                name="Image"
-                variant="outlined"
-                required
+              <FormControl variant="outlined" className={classes.form}>
+                <Input type="file" 
                 fullWidth
-                id="image"
-                label="Image"
-                autoFocus
-              />
+                margin="dense"
+                disableUnderline
+                name="file" 
+                placeholder="Upload a image"
+                onChange={ updateImage }
+                />
+                <Button onClick={ uploadImage }
+                  type="submit"
+                  variant="contained"
+                  color="secondary"
+                  className={classes.submit}
+                  >
+                  Confirm Item image
+                </Button>
+              </FormControl>
             </Grid>
-            <input type="file"
-            name="file"
-            placeholder="Upload a image"
-            onChange={uploadImage}
-            
-            />
-            
+            <Grid item xs={12}>
+                {loading? (
+                  <h3>Loading...</h3>
+                   ):(
+                  <img src={image} style={{width: '250px'}}/>
+                  )}
+            </Grid>
           </Grid>
           <Button
             type="submit"
@@ -205,7 +239,7 @@ export default function NewItemForm({ user }) {
             color="primary"
             className={classes.submit}
           >
-            Upload Item
+            Upload Item for Trade
           </Button>
           <Grid container justify="flex-end">
             <Grid item>
@@ -216,13 +250,6 @@ export default function NewItemForm({ user }) {
           </Grid>
         </form>
       </div>
-     
-{/* 
-        {loading? (
-            <h3>Loading...</h3>
-        ):(
-            <img src={photo} style={{width: '300px'}}/>
-        )} */}
 
       <Box mt={5}>
         <Copyright />
