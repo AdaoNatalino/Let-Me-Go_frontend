@@ -63,12 +63,11 @@ export default function NewItemForm({ user }) {
   const [condition, setCondition] = useState("")
   const [category_id, setCategory_id] = useState("")
   const [imageFile, setImageFile] = useState(null)
-  const [image, setImage] = useState("")
-  const user_id = user.id  
+  const [image, setImage] = useState(null)
   const [categories, setCategories] = useState([])
-
   const [loading, setLoading] = useState(false)
-
+  
+  const user_id = user.id  
   let history = useHistory();
 
   useEffect(()=>{
@@ -79,7 +78,7 @@ export default function NewItemForm({ user }) {
     e.preventDefault();
     const itemData = { name, description, condition, category_id, image, user_id }
     console.log(itemData)
-    // history.push('/profile')
+    history.push('/profile')
     API.createNewItem(itemData)
     clearForm();
   };
@@ -223,15 +222,21 @@ export default function NewItemForm({ user }) {
                   )}
             </Grid>
           </Grid>
+
+          { image ? 
+          
           <Button
-            type="submit"
-            fullWidth
-            variant="contained"
-            color="primary"
-            className={classes.submit}
-          >
-            Upload Item for Trade
-          </Button>
+          type="submit"
+          fullWidth
+          variant="contained"
+          color="primary"
+          className={classes.submit}
+        >
+          Upload Item for Trade
+        </Button>  
+
+          : null}
+         
           <Grid container justify="flex-end">
             <Grid item>
               <Link href="/profile" variant="body2">
