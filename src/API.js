@@ -103,8 +103,24 @@ const configObject = (request, key, data) => {
 }
 
 const updateUserInfo = (userData, id) => {
-  const obj = configObject("PATCH", "user", userData)
-  return authorizedFetch(URL + "users/" + id, obj)
+  return authorizedFetch(URL + "users/" + id, {
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json",
+      Accept: "application/json",
+    },
+    body: JSON.stringify({ user: userData }),
+  })
+    .then((res) => res.json())
+    .then((res) => {
+        console.log(res);
+      return res;
+    })
+
+
+
+  // const obj = configObject("PATCH", "user", userData)
+  // return authorizedFetch(URL + "users/" + id, obj)
 }
 
 

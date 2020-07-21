@@ -63,9 +63,9 @@ export default function EditProfile({ handlePostAuth, user  }) {
     e.preventDefault();
     const userData = { email, password, username, city, avatar, bio }
     console.log(userData)
-    // history.push('/profile')
+    history.push('/profile')
     API.updateUserInfo(userData, user.id)
-    .then(console.log)
+    .then(resp => handlePostAuth(resp))
     clearForm();
   };
 
