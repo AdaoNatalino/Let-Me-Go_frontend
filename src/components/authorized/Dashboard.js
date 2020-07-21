@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -25,13 +25,12 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import BusinessCenterIcon from '@material-ui/icons/BusinessCenter';
 import ListItemText from '@material-ui/core/ListItemText';
-import ListSubheader from '@material-ui/core/ListSubheader';
 import DashboardIcon from '@material-ui/icons/Dashboard';
 import PeopleIcon from '@material-ui/icons/People';
-import BarChartIcon from '@material-ui/icons/BarChart';
 import MyItemsContainer from "./MyItemsContainer"
+import MailIcon from '@material-ui/icons/Mail';
+import NotificationsIcon from '@material-ui/icons/Notifications';
 
-// import { mainListItems, secondaryListItems } from './DashBoardHelpers/listItems';
 import Deposits from './DashBoardHelpers/Deposits';
 import MyTrades from './DashBoardHelpers/MyTrades';
 import MyFriends from './DashBoardHelpers/MyFriends';
@@ -142,12 +141,10 @@ export default function Dashboard({ logOut, user }) {
   };
   const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
 
-
   const RENDER = {
     ITEMS: "items",
     TRADES: "trades",
     FRIENDS: "friends",
-
   }
 
   const [render, setRender] = useState(RENDER.ITEMS)
@@ -156,28 +153,12 @@ export default function Dashboard({ logOut, user }) {
   const renderMyTrades = () => <MyTrades  trades={ user.trades }/>
   const renderMyFriends = () => <MyFriends  friends={ user }/>
 
-   
-  // useEffect(()=> {
-  //   whatComponentToRender();
-  // }, [render])
-
   const whatComponentToRender = () => {
-    // debugger
-    if(render === RENDER.ITEMS) { renderMyItemsContainer() }
-    if(render === RENDER.TRADES) { renderMyTrades() }
-    if(render === RENDER.FRIENDS) { renderMyFriends() }
-
+    if(render === RENDER.ITEMS) return renderMyItemsContainer();
+    if(render === RENDER.TRADES) return renderMyTrades();
+    if(render === RENDER.FRIENDS) return renderMyFriends();
   }
   
-
-  // const whatComponentToRender = (driver) => {
-  //   // debugger
-  //   if(driver === RENDER.ITEMS) { renderMyItemsContainer() }
-  //   if(driver === RENDER.TRADES) { renderMyTrades() }
-  //   if(driver === RENDER.FRIENDS) { renderMyFriends() }
-
-  // }
-
   return (
     <div className={classes.root}>
       <CssBaseline />
@@ -207,6 +188,16 @@ export default function Dashboard({ logOut, user }) {
           >
             Dashboard
           </Typography>
+            <IconButton aria-label="show 4 new mails" color="inherit">
+              <Badge badgeContent={1} color="secondary">
+                <MailIcon />
+              </Badge>
+          </IconButton>
+            <IconButton aria-label="show 11 new notifications" color="inherit">
+              <Badge badgeContent={10} color="secondary">
+                <NotificationsIcon />
+              </Badge>
+          </IconButton>
           <IconButton color="inherit" onClick={logOut}>
             
               <ExitToAppIcon />
@@ -239,21 +230,21 @@ export default function Dashboard({ logOut, user }) {
               </ListItem>
               </Link>
 
-              <ListItem button onClick={()=> setRender(RENDER.TRADES) }>
+              <ListItem button onClick={ ()=> setRender(RENDER.TRADES) }>
                 <ListItemIcon>
                   <BusinessCenterIcon />
                 </ListItemIcon>
                 <ListItemText primary="My Trades" />
               </ListItem>
 
-              <ListItem button onClick={()=> setRender(RENDER.FRIENDS) }>
+              <ListItem button onClick={ ()=> setRender(RENDER.FRIENDS) }>
                 <ListItemIcon>
                   <PeopleIcon />
                 </ListItemIcon>
                 <ListItemText primary="Friends" />
               </ListItem>
 
-              <ListItem button onClick={()=> setRender(RENDER.ITEMS) }>
+              <ListItem button onClick={ ()=> setRender(RENDER.ITEMS) }>
                 <ListItemIcon>
                   <TableChartIcon />
                 </ListItemIcon>
@@ -281,13 +272,7 @@ export default function Dashboard({ logOut, user }) {
 
             <Grid item xs={12} md={8} lg={9}>
            
-              {/* { whatComponentToRender() } */}
-
-              <MyItemsContainer
-              items={ user.items }
-              />
-
-              <MyTrades trades={ user.trades }/>
+              { whatComponentToRender() }
 
             </Grid>
 
