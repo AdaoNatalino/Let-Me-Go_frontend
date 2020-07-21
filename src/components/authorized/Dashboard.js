@@ -33,7 +33,9 @@ import MyItemsContainer from "./MyItemsContainer"
 
 // import { mainListItems, secondaryListItems } from './DashBoardHelpers/listItems';
 import Deposits from './DashBoardHelpers/Deposits';
-import Orders from './DashBoardHelpers/Orders';
+import MyTrades from './DashBoardHelpers/MyTrades';
+import MyFriends from './DashBoardHelpers/MyFriends';
+
 
 function Copyright() {
   return (
@@ -147,7 +149,34 @@ export default function Dashboard({ logOut, user }) {
     FRIENDS: "friends",
 
   }
+
   const [render, setRender] = useState(RENDER.ITEMS)
+
+  const renderMyItemsContainer = () => <MyItemsContainer  items={ user.items }/>
+  const renderMyTrades = () => <MyTrades  trades={ user.trades }/>
+  const renderMyFriends = () => <MyFriends  friends={ user }/>
+
+   
+  // useEffect(()=> {
+  //   whatComponentToRender();
+  // }, [render])
+
+  const whatComponentToRender = () => {
+    // debugger
+    if(render === RENDER.ITEMS) { renderMyItemsContainer() }
+    if(render === RENDER.TRADES) { renderMyTrades() }
+    if(render === RENDER.FRIENDS) { renderMyFriends() }
+
+  }
+  
+
+  // const whatComponentToRender = (driver) => {
+  //   // debugger
+  //   if(driver === RENDER.ITEMS) { renderMyItemsContainer() }
+  //   if(driver === RENDER.TRADES) { renderMyTrades() }
+  //   if(driver === RENDER.FRIENDS) { renderMyFriends() }
+
+  // }
 
   return (
     <div className={classes.root}>
@@ -252,11 +281,14 @@ export default function Dashboard({ logOut, user }) {
 
 
             <Grid item xs={12} md={8} lg={9}>
-            
-              // HERE I WANNA PUT ALL MY ITEMS 
+           
+              {/* { whatComponentToRender() } */}
+
               <MyItemsContainer
               items={ user.items }
               />
+
+              <MyFriends />
 
             </Grid>
 
