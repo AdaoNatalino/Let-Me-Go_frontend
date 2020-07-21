@@ -92,7 +92,6 @@ export default function NewItemForm({ user }) {
   
   }
 
- 
   const updateImageFile = async e => {
     const files = e.target.files
     const data = new FormData()

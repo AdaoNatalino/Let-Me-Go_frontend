@@ -47,37 +47,35 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function SignUp({ handlePostAuth }) {
+export default function EditProfile({ handlePostAuth, user  }) {
   const classes = useStyles();
 
-  const [name, setName] = useState("")
-  const [email, setEmail] = useState("")
-  const [username, setUsername] = useState("")
   const [password, setPassword] = useState("")
-  const [city, setCity] = useState("")
-  const [avatar, setAvatar] = useState("")
-  const [bio, setBio] = useState("")
+  const [email, setEmail] = useState(user.email)
+  const [username, setUsername] = useState(user.username)
+  const [city, setCity] = useState(user.city)
+  const [avatar, setAvatar] = useState(user.avatar)
+  const [bio, setBio] = useState(user.bio)
 
   let history = useHistory();
 
-  const handleSignUp = (e) => {
+  const handleUpdateUser = (e) => {
     e.preventDefault();
-    const userData = { name, email, username, password, city, avatar, bio }
+    const userData = { email, password, username, city, avatar, bio }
     console.log(userData)
-    history.push('/')
-    API.createNewUser(userData)
-    .then(handlePostAuth)
+    // history.push('/profile')
+    API.updateUserInfo(userData, user.id)
+    .then(console.log)
     clearForm();
   };
 
   const clearForm = () => {
-    setName("")
     setEmail("")
     setUsername("")
-    setPassword("")
     setCity("")
     setAvatar("")
     setBio("")
+    setPassword("")
   }
 
   return (
@@ -90,21 +88,9 @@ export default function SignUp({ handlePostAuth }) {
         <Typography component="h1" variant="h5">
           Edit Profile
         </Typography>
-        <form className={classes.form} noValidate onSubmit={ handleSignUp }>
+        <form className={classes.form} noValidate onSubmit={ handleUpdateUser }>
           <Grid container spacing={2}>
-            <Grid item xs={12}>
-              <TextField onChange={ (e) => setName(e.target.value) }
-                value={name}
-                autoComplete="fname"
-                name="fullName"
-                variant="outlined"
-                required
-                fullWidth
-                id="fullName"
-                label="Full Name"
-                autoFocus
-              />
-            </Grid>
+        
             <Grid item xs={12}>
               <TextField onChange={ (e) => setEmail(e.target.value) }
                 value={email}
@@ -130,20 +116,20 @@ export default function SignUp({ handlePostAuth }) {
                 autoFocus
               />
             </Grid>
-           
             <Grid item xs={12}>
               <TextField onChange={ (e) => setPassword(e.target.value) }
                 value={password}
+                autoComplete="password"
+                name="password"
                 variant="outlined"
                 required
                 fullWidth
-                name="password"
-                label="Password"
-                type="password"
                 id="password"
-                autoComplete="current-password"
+                label="Password"
+                autoFocus
               />
             </Grid>
+          
             <Grid item xs={12}>
               <TextField onChange={ (e) => setCity(e.target.value) }
                 value={city}

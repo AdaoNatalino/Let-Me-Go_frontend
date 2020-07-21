@@ -1,13 +1,5 @@
 const URL = `http://localhost:3001/`
 
-// authorizedFetch("someURL", {
-//   method: "PATCH",
-//   headers: {
-//     "Content-Type": "application/json",
-//   },
-//   body: JSON.stringify({ key: "value" }),
-// })
-
 const authorizedFetch = (url, options = {}) => {
   return fetch(url, {
     method: options.method,
@@ -82,18 +74,6 @@ const getChosenCategory = (categoryName) => {
   .catch(error => console.log(error))
 }
 
-// const configObject = (request, key, data) => {
-//   const obj = {
-//     method: request,
-//     headers: {
-//       "Content-Type": "application/json",
-//       Accept: "application/json",
-//     },
-//     body: JSON.stringify({ [key]: data }),
-//   }
-//   return obj
-// }
-
 const createNewItem = (itemData) => {
   return authorizedFetch(URL + "items", {
     method: "POST",
@@ -110,9 +90,26 @@ const createNewItem = (itemData) => {
     })
 }
 
+const configObject = (request, key, data) => {
+  const obj = {
+    method: request,
+    headers: {
+      "Content-Type": "application/json",
+      Accept: "application/json",
+    },
+    body: JSON.stringify({ [key]: data }),
+  }
+  return obj
+}
+
+const updateUserInfo = (userData, id) => {
+  const obj = configObject("PATCH", "user", userData)
+  return authorizedFetch(URL + "users/" + id, obj)
+}
+
 
 
 export default { 
   createNewUser, logInUser, validateToken, getAllItems, getAllCategories, getChosenCategory, 
-  createNewItem
+  createNewItem, updateUserInfo
 }  

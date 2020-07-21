@@ -14,6 +14,7 @@ function App() {
   const [user, setUser] = useState(null)
   
   useEffect(() => {
+    document.title = "Let Me Go!"
     if (localStorage.getItem('jwt')) 
     API.validateToken().then(user => handlePostAuth(user))
   }, [])
@@ -40,6 +41,7 @@ function App() {
           ? <Authorized 
             user={user}
             logOut={logOut}
+            handlePostAuth={handlePostAuth}
           />
           : <Unauthorized
             handlePostAuth={handlePostAuth}

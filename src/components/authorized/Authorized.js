@@ -10,8 +10,7 @@ import NewItemForm from "./NewItemForm"
 import DashBoard from "./Dashboard"
 import EditProfile from "./EditProfile"
 
-
-export default function Authorized ({ logOut, user }) {
+export default function Authorized ({ logOut, user, handlePostAuth }) {
 
     const [items, setItems] = useState([])
 
@@ -55,6 +54,7 @@ export default function Authorized ({ logOut, user }) {
                     render={routerProps =>
                         <EditProfile {...routerProps}
                         user={user}
+                        handlePostAuth={handlePostAuth}
                         />
                     }
                 />
