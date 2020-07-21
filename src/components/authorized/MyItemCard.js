@@ -7,17 +7,22 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
+import IconButton from '@material-ui/core/IconButton';
+import DeleteIcon from '@material-ui/icons/Delete';
+import EditIcon from '@material-ui/icons/Edit';
+import ShareIcon from '@material-ui/icons/Share';
+
 
 const useStyles = makeStyles({
   root: {
-    maxWidth: 345,
+    maxWidth: 180,
   },
   media: {
-    height: 140,
+    height: 120,
   },
 });
 
-export default function MediaCard() {
+export default function MediaCard({ item }) {
   const classes = useStyles();
 
   return (
@@ -25,26 +30,28 @@ export default function MediaCard() {
       <CardActionArea>
         <CardMedia
           className={classes.media}
-          image="/static/images/cards/contemplative-reptile.jpg"
-          title="Contemplative Reptile"
+          image={item.image}
+          title={item.name}
         />
         <CardContent>
-          <Typography gutterBottom variant="h5" component="h2">
-            Lizard
-          </Typography>
+          {/* <Typography gutterBottom variant="h5" component="h2">
+            {item.name}
+          </Typography> */}
           <Typography variant="body2" color="textSecondary" component="p">
-            Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging
-            across all continents except Antarctica
+            {item.condition}
           </Typography>
         </CardContent>
       </CardActionArea>
       <CardActions>
-        <Button size="small" color="primary">
-          Share
-        </Button>
-        <Button size="small" color="primary">
-          Learn More
-        </Button>
+        <IconButton aria-label="add to favorites" color="secondary">
+          <DeleteIcon color="secondary" />
+        </IconButton>
+        <IconButton aria-label="add to favorites" color="secondary">
+          <EditIcon color="primary" />
+        </IconButton>
+        <IconButton aria-label="add to favorites" color="secondary">
+          <ShareIcon style={{ color: "green" }} />
+        </IconButton>
       </CardActions>
     </Card>
   );

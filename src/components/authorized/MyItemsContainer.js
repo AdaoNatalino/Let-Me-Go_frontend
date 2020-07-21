@@ -17,7 +17,7 @@ export default function ItemsContainer( { items }) {
 
     const renderMyItems = () => items.map(item => {
         return(
-            <Grid key={item.name} item xs={12} sm={6} md={4}>
+            <Grid key={item.name} item xs={12} sm={6} md={3}>
                 <MyItemCard key={item.id} item={item}/>
             </Grid>   
         )
@@ -27,7 +27,7 @@ export default function ItemsContainer( { items }) {
     
     return (
         <Grid 
-        container spacing={6} 
+        container spacing={1} 
         justify="center"
             className={classes.gridContainer}
         >

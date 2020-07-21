@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -18,14 +18,15 @@ import Link from '@material-ui/core/Link';
 import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
+import TableChartIcon from '@material-ui/icons/TableChart';
 
 
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
+import BusinessCenterIcon from '@material-ui/icons/BusinessCenter';
 import ListItemText from '@material-ui/core/ListItemText';
 import ListSubheader from '@material-ui/core/ListSubheader';
 import DashboardIcon from '@material-ui/icons/Dashboard';
-import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import PeopleIcon from '@material-ui/icons/People';
 import BarChartIcon from '@material-ui/icons/BarChart';
 import MyItemsContainer from "./MyItemsContainer"
@@ -139,6 +140,15 @@ export default function Dashboard({ logOut, user }) {
   };
   const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
 
+
+  const RENDER = {
+    ITEMS: "items",
+    TRADES: "trades",
+    FRIENDS: "friends",
+
+  }
+  const [render, setRender] = useState(RENDER.ITEMS)
+
   return (
     <div className={classes.root}>
       <CssBaseline />
@@ -191,32 +201,34 @@ export default function Dashboard({ logOut, user }) {
           <List>
             
             <div>
+              <Link color="inherit" href="/profile">
               <ListItem button>
                 <ListItemIcon>
                   <DashboardIcon />
                 </ListItemIcon>
                 <ListItemText primary="Dashboard" />
               </ListItem>
+              </Link>
 
-              <ListItem button>
+              <ListItem button onClick={()=> setRender(RENDER.TRADES) }>
                 <ListItemIcon>
-                  <ShoppingCartIcon />
+                  <BusinessCenterIcon />
                 </ListItemIcon>
-                <ListItemText primary="Orders" />
+                <ListItemText primary="My Trades" />
               </ListItem>
 
-              <ListItem button>
+              <ListItem button onClick={()=> setRender(RENDER.FRIENDS) }>
                 <ListItemIcon>
                   <PeopleIcon />
                 </ListItemIcon>
-                <ListItemText primary="Customers" />
+                <ListItemText primary="Friends" />
               </ListItem>
 
-              <ListItem button>
+              <ListItem button onClick={()=> setRender(RENDER.ITEMS) }>
                 <ListItemIcon>
-                  <BarChartIcon />
+                  <TableChartIcon />
                 </ListItemIcon>
-                <ListItemText primary="Reports" />
+                <ListItemText primary="My Items" />
               </ListItem>
 
               <ListItem button onClick={logOut}>
