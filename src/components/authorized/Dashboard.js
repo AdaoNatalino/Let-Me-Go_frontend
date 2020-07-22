@@ -26,13 +26,13 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import BusinessCenterIcon from '@material-ui/icons/BusinessCenter';
 import ListItemText from '@material-ui/core/ListItemText';
-import DashboardIcon from '@material-ui/icons/Dashboard';
+import AddToPhotosIcon from '@material-ui/icons/AddToPhotos';
 import PeopleIcon from '@material-ui/icons/People';
 import MyItemsContainer from "./MyItemsContainer"
 import MailIcon from '@material-ui/icons/Mail';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 
-import Deposits from './DashBoardHelpers/Deposits';
+import UserLogo from './DashBoardHelpers/UserLogo';
 import MyTrades from './DashBoardHelpers/MyTrades';
 import MyFriends from './DashBoardHelpers/MyFriends';
 
@@ -236,12 +236,12 @@ export default function Dashboard({ logOut, userInfo }) {
           <List>
             
             <div>
-              <Link color="inherit" href="/profile">
+              <Link color="inherit" href="/newItem">
               <ListItem button>
                 <ListItemIcon>
-                  <DashboardIcon />
+                  <AddToPhotosIcon />
                 </ListItemIcon>
-                <ListItemText primary="Dashboard" />
+                <ListItemText primary="Add Item" />
               </ListItem>
               </Link>
 
@@ -297,7 +297,7 @@ export default function Dashboard({ logOut, userInfo }) {
 
             <Grid item xs={12} md={4} lg={3}>
               <Paper className={fixedHeightPaper}>
-                <Deposits user={user} />
+                <UserLogo user={user} />
               </Paper>
             </Grid>
             {/* Recent Orders */}

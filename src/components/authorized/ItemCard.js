@@ -44,10 +44,16 @@ const useStyles = makeStyles((theme) => ({
 export default function RecipeReviewCard( { item } ) {
   const classes = useStyles();
   const [expanded, setExpanded] = React.useState(false);
+  const [traded, setTraded] = React.useState(false);
+
 
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
+
+  const handleTradingClick = () => {
+    setTraded(!traded);
+  }
 
 
   return (
@@ -77,9 +83,19 @@ export default function RecipeReviewCard( { item } ) {
         </Typography>
       </CardContent> */}
       <CardActions disableSpacing>
-        <IconButton aria-label="add to favorites" color="secondary">
+
+        <IconButton 
+          className={clsx(classes.expand, {
+            [classes.expandOpen]: expanded,
+          })}
+          onClick={handleTradingClick}
+          aria-expanded={expanded}
+          aria-label="show more"
+          aria-label="add to favorites" color="secondary">
+
           <SwapVerticalCircleIcon color="secondary" />
         </IconButton>
+
         <IconButton aria-label="share" color="primary">
           <SaveIcon color="primary"/>
         </IconButton>
@@ -94,6 +110,7 @@ export default function RecipeReviewCard( { item } ) {
           <ExpandMoreIcon />
         </IconButton>
       </CardActions>
+
       <Collapse in={expanded} timeout="auto" unmountOnExit>
         <CardContent>
           <Typography paragraph style={{ color: 'red' }} >INFO:</Typography>
@@ -112,6 +129,16 @@ export default function RecipeReviewCard( { item } ) {
           <Typography>
 
           </Typography>
+        </CardContent>
+      </Collapse>
+
+      <Collapse in={traded} timeout="auto" unmountOnExit>
+        <CardContent>
+          <Typography paragraph style={{ color: 'red' }} >INFO:</Typography>
+          <Typography paragraph>
+            {item.description}
+          </Typography>
+        
         </CardContent>
       </Collapse>
     </Card>

@@ -8,10 +8,6 @@ import TableRow from '@material-ui/core/TableRow';
 import Typography from '@material-ui/core/Typography';
 
 
-// function preventDefault(event) {
-//   event.preventDefault();
-// }
-
 const useStyles = makeStyles((theme) => ({
   seeMore: {
     marginTop: theme.spacing(3),
