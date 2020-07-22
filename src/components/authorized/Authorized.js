@@ -38,7 +38,7 @@ export default function Authorized ({ logOut, user, handlePostAuth }) {
                 <Route exact path="/profile">
                     <DashBoard
                         logOut={logOut}
-                        user={user}
+                        userInfo={user}
                         />
                 </Route>
                 <Route 

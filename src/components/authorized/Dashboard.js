@@ -1,4 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useHistory } from "react-router-dom";
+
+
 import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -19,7 +22,6 @@ import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import TableChartIcon from '@material-ui/icons/TableChart';
-
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import BusinessCenterIcon from '@material-ui/icons/BusinessCenter';
@@ -33,6 +35,8 @@ import NotificationsIcon from '@material-ui/icons/Notifications';
 import Deposits from './DashBoardHelpers/Deposits';
 import MyTrades from './DashBoardHelpers/MyTrades';
 import MyFriends from './DashBoardHelpers/MyFriends';
+
+import API from "../../API"
 
 
 function Copyright() {
@@ -129,7 +133,16 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Dashboard({ logOut, user }) {
+export default function Dashboard({ logOut, userInfo }) {
+  let history = useHistory();
+
+  const [user, setUser] = useState(userInfo)
+
+  useEffect(() => {
+    if (localStorage.getItem('jwt')) 
+    API.validateToken().then(resp => setUser(resp.user))
+  }, [])
+
   const classes = useStyles();
   const [open, setOpen] = React.useState(true);
   const handleDrawerOpen = () => {
@@ -197,7 +210,10 @@ export default function Dashboard({ logOut, user }) {
                 <NotificationsIcon />
               </Badge>
           </IconButton>
-          <IconButton color="inherit" onClick={logOut}>
+          <IconButton color="inherit" onClick={()=> {
+            logOut()
+            history.push("/")
+            }}>
             
               <ExitToAppIcon />
            
@@ -250,7 +266,10 @@ export default function Dashboard({ logOut, user }) {
                 <ListItemText primary="My Items" />
               </ListItem>
 
-              <ListItem button onClick={logOut}>
+              <ListItem button onClick={()=> {
+                logOut()
+                history.push("/")
+                }}>
                 <ListItemIcon>
                   <ExitToAppIcon />
                 </ListItemIcon>
