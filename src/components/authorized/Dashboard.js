@@ -37,6 +37,7 @@ import MyTrades from './DashBoardHelpers/MyTrades';
 import MyFriends from './DashBoardHelpers/MyFriends';
 
 import API from "../../API"
+import Request from "./Request"
 
 
 function Copyright() {
@@ -137,6 +138,8 @@ export default function Dashboard({ logOut, userInfo }) {
   let history = useHistory();
 
   const [user, setUser] = useState(userInfo)
+  const [trade, setTrade] = useState(null)
+
 
   useEffect(() => {
     if (localStorage.getItem('jwt')) 
@@ -157,18 +160,27 @@ export default function Dashboard({ logOut, userInfo }) {
     ITEMS: "items",
     TRADES: "trades",
     FRIENDS: "friends",
+    REQUEST: "request"
+  }
+
+  const setRequestToRender = (trade) => { 
+    setTrade(trade)
+    setRender(RENDER.REQUEST)
   }
 
   const [render, setRender] = useState(RENDER.ITEMS)
 
   const renderMyItemsContainer = () => <MyItemsContainer  items={ user.items }/>
-  const renderMyTrades = () => <MyTrades user={ user }/>
+  const renderMyTrades = () => <MyTrades user={ user } setRequestToRender={ setRequestToRender } />
   const renderMyFriends = () => <MyFriends  friends={ user }/>
+  const renderRequest = () => <Request user={user} trade={trade} />
 
   const whatComponentToRender = () => {
     if(render === RENDER.ITEMS) return renderMyItemsContainer();
     if(render === RENDER.TRADES) return renderMyTrades();
     if(render === RENDER.FRIENDS) return renderMyFriends();
+    if(render === RENDER.REQUEST) return renderRequest();
+
   }
   
   return (

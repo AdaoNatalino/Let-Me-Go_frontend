@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
+
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Typography from '@material-ui/core/Typography';
-
+import Button from '@material-ui/core/Button';
 
 import API from "../../../API"
 
@@ -16,7 +17,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function MyTrades( { user } ) {
+export default function MyTrades( { user, setRequestToRender } ) {
 
   const [trades, setTrades] = useState([])
 
@@ -40,15 +41,26 @@ export default function MyTrades( { user } ) {
           </TableRow>
         </TableHead>
         <TableBody>
-          {/* {trades.map((trade) => (
+          {trades.map((trade) => (
             <TableRow key={trade.id}>
-              <TableCell>{trade.date}</TableCell>
+              <TableCell>{trade.created_at}</TableCell>
               <TableCell>{trade.status}</TableCell>
-              <TableCell>{trade.item1}</TableCell>
-              <TableCell>{trade.item2}</TableCell>
-              <TableCell align="right">{row.amount}</TableCell>
+              <TableCell>{trade.item1.name}</TableCell>
+              <TableCell>{trade.item2.name}</TableCell>
+              <TableCell align="right">
+
+                {trade.status === "Pending" ?
+                <Button
+                onClick={() => setRequestToRender(trade) }
+                variant="contained"
+                color="primary"
+                >
+                  Request 
+                </Button>
+                : null }
+              </TableCell>
             </TableRow>
-          ))} */}
+          ))}
         </TableBody>
       </Table>
       {/* <div className={classes.seeMore}>
