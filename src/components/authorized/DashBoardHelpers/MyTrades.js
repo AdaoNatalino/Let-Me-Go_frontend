@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -8,13 +8,22 @@ import TableRow from '@material-ui/core/TableRow';
 import Typography from '@material-ui/core/Typography';
 
 
+import API from "../../../API"
+
 const useStyles = makeStyles((theme) => ({
   seeMore: {
     marginTop: theme.spacing(3),
   },
 }));
 
-export default function MyTrades( {trades} ) {
+export default function MyTrades( { user } ) {
+
+  const [trades, setTrades] = useState([])
+
+  useEffect(() => {
+    API.getMyTrades(user.id).then(trades => setTrades(trades))
+  }, [])
+
   // const classes = useStyles();
   return (
     <React.Fragment>
@@ -31,15 +40,15 @@ export default function MyTrades( {trades} ) {
           </TableRow>
         </TableHead>
         <TableBody>
-          {trades.map((trade) => (
+          {/* {trades.map((trade) => (
             <TableRow key={trade.id}>
               <TableCell>{trade.date}</TableCell>
               <TableCell>{trade.status}</TableCell>
               <TableCell>{trade.item1}</TableCell>
               <TableCell>{trade.item2}</TableCell>
-              {/* <TableCell align="right">{row.amount}</TableCell> */}
+              <TableCell align="right">{row.amount}</TableCell>
             </TableRow>
-          ))}
+          ))} */}
         </TableBody>
       </Table>
       {/* <div className={classes.seeMore}>

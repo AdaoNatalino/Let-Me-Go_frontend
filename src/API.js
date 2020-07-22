@@ -112,9 +112,24 @@ const updateUserInfo = (userData, id) => {
     })
 }
 
+const requestNewTrade = (tradeData) => {
+  const obj = configObject("POST", "trade", tradeData)
+  return authorizedFetch(URL + "trades", obj)
+  .then((res) => res.json())
+  .then((res) => {
+      console.log(res);
+    return res;
+  })
+}
+
+const getMyTrades = (id) => {
+  return authorizedFetch(URL + "trades/" + id)
+  .then(resp => resp.json())
+  .catch(error => console.log(error))
+}
 
 
 export default { 
   createNewUser, logInUser, validateToken, getAllItems, getAllCategories, getChosenCategory, 
-  createNewItem, updateUserInfo
+  createNewItem, updateUserInfo, requestNewTrade, getMyTrades
 }  

@@ -230,9 +230,9 @@ export default function NewItemForm({ user }) {
           variant="contained"
           color="primary"
           className={classes.submit}
-        >
+          >
           Upload Item for Trade
-        </Button>  
+          </Button>  
 
           : null}
          

@@ -162,7 +162,7 @@ export default function Dashboard({ logOut, userInfo }) {
   const [render, setRender] = useState(RENDER.ITEMS)
 
   const renderMyItemsContainer = () => <MyItemsContainer  items={ user.items }/>
-  const renderMyTrades = () => <MyTrades  trades={ user.trades }/>
+  const renderMyTrades = () => <MyTrades user={ user }/>
   const renderMyFriends = () => <MyFriends  friends={ user }/>
 
   const whatComponentToRender = () => {
