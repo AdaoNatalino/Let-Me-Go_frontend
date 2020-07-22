@@ -2,6 +2,7 @@ import React from 'react'
 
 import { Grid } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
+import Button from '@material-ui/core/Button';
 
 import RequestCard from "./RequestCard"
 
@@ -22,12 +23,26 @@ export default function Request ({ user, trade }) {
     const itemsInRequest = () => {
         return (
             <>
-                <Grid key={item1.name} item xs={12} sm={6} md={6}>
+                <Grid key={item1.name} item xs={12} sm={3} md={6}>
                     <RequestCard key={item1.id} item={item1} user={trade.user1}/>
                 </Grid> 
-                <Grid key={item2.name} item xs={12} sm={6} md={6}>
+                <Grid key={item2.name} item xs={12} sm={3} md={6}>
                     <RequestCard key={item2.id} item={item2} user={trade.user2}/>
-                </Grid> 
+                </Grid>
+                <Button
+                // onClick={() => setRequestToRender(trade) }   
+                variant="contained"
+                color="primary"
+                >
+                  Approve Request 
+                </Button>
+                <Button
+                // onClick={() => setRequestToRender(trade) }
+                variant="contained"
+                color="secondary"
+                >
+                  Reprove Request 
+                </Button>
             </>
         )
     }
