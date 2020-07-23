@@ -39,7 +39,7 @@ function ProductHero(props) {
         alt="increase priority"
       />
       <Typography color="inherit" align="center" variant="h2" marked="center">
-        Trading Good for Amazing!
+      EXCHANGE.TRADE.BARTER!
       </Typography>
       <Typography
         color="inherit"
@@ -51,7 +51,7 @@ function ProductHero(props) {
       </Typography>
      
       <Typography variant="h6" color="inherit" className={classes.more}>
-        Discover the experience
+        Check it out!
       </Typography>
     </ProductHeroLayout>
   );
