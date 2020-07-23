@@ -1,6 +1,4 @@
 import React from 'react'
-import { useHistory } from "react-router-dom";
-
 
 import { Grid } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
@@ -18,18 +16,25 @@ const useStyles = makeStyles({
 })
 
 export default function Request ({ user, trade, comeBackToTrades }) {
-    let history = useHistory();
 
     const classes = useStyles();
     const item1 = trade.item1
     const item2 = trade.item2
     
-    const status = "Rejected"
+    const statusRejected = "Rejected"
+    const statusApproved = "Approved"
 
     const handleReject = () => {
-        const tradeData = { status }
+        const tradeData = { statusRejected }
         API.rejectTradeRequest(tradeData, trade.id)
         .then(alert("Request Rejected!"))  
+        comeBackToTrades()
+    }
+
+    const handleApprove = () => {
+        const tradeData = { statusApproved }
+        API.approveTradeRequest(tradeData, trade.id)
+        .then(alert("Request Approved!"))  
         comeBackToTrades()
     }
 
@@ -44,7 +49,7 @@ export default function Request ({ user, trade, comeBackToTrades }) {
                     <RequestCard key={item2.id} item={item2} user={trade.user2}/>
                 </Grid>
                 <Button
-                // onClick={() => setRequestToRender(trade) }   
+                onClick={ handleApprove }   
                 variant="contained"
                 color="primary"
                 >

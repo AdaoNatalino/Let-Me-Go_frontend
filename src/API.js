@@ -138,8 +138,20 @@ const rejectTradeRequest = (tradeData, id) => {
   })
 }
 
+const approveTradeRequest = (tradeData, id) => {
+  const obj = configObject("PATCH", "trade", tradeData)
+  return authorizedFetch(URL + "approve/" + id, obj)
+  .then((res) => res.json())
+  .then((res) => {
+      console.log(res);
+    return res;
+  })
+}
+
+
+// approve/:id
 
 export default { 
   createNewUser, logInUser, validateToken, getAllItems, getAllCategories, getChosenCategory, 
-  createNewItem, updateUserInfo, requestNewTrade, getMyTrades, rejectTradeRequest
+  createNewItem, updateUserInfo, requestNewTrade, getMyTrades, rejectTradeRequest, approveTradeRequest
 }  

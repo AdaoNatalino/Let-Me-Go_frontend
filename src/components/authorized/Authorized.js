@@ -45,7 +45,9 @@ export default function Authorized ({ logOut, user, handlePostAuth }) {
                     exact 
                     path="/items/:category" 
                     render={routerProps =>
-                        <ItemsContainer {...routerProps}/>
+                        <ItemsContainer {...routerProps}
+                        user={user}
+                        />
                     }
                 />
                 <Route 

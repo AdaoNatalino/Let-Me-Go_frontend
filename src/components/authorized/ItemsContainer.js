@@ -26,7 +26,7 @@ export default function ItemsContainer(props) {
     const renderItems = () => items.map(item => {
         return(
             <Grid key={item.name} item xs={12} sm={6} md={4}>
-                <ItemCard key={item.id} item={item}/>
+                <ItemCard key={item.id} item={item} user={props.user}/>
             </Grid>   
         )
     })

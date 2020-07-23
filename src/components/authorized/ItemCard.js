@@ -53,7 +53,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function ItemCard( { item } ) {
+export default function ItemCard( { item, user } ) {
   let history = useHistory();
 
   const classes = useStyles();
@@ -108,17 +108,22 @@ export default function ItemCard( { item } ) {
       </CardContent> */}
       <CardActions disableSpacing>
 
+        {/* {user !== item.user ? null  :  null}  */}
+        
         <IconButton 
-          className={clsx(classes.expand, {
-            [classes.expandOpen]: expanded,
-          })}
-          onClick={handleTradingClick}
-          aria-expanded={expanded}
-          aria-label="show more"
-          aria-label="add to favorites" color="secondary">
+              className={clsx(classes.expand, {
+                [classes.expandOpen]: expanded,
+              })}
+              onClick={handleTradingClick}
+              aria-expanded={expanded}
+              aria-label="show more"
+              aria-label="add to favorites" color="secondary">
 
-          <SwapVerticalCircleIcon color="secondary" />
-        </IconButton>
+            <SwapVerticalCircleIcon color="secondary" />
+          </IconButton> 
+        
+        
+       
 
         <IconButton aria-label="share" color="primary">
           <SaveIcon color="primary"/>
