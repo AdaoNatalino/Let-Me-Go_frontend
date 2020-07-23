@@ -25,6 +25,23 @@ export default function MyTrades( { user, setRequestToRender } ) {
     API.getMyTrades(user.id).then(trades => setTrades(trades))
   }, [])
 
+  const renderButtonRequest = (trade) => {
+  
+    const availableToTrade = trade.status === "Pending" && trade.requested_by !== user.id
+
+    if(availableToTrade) {
+      return(
+        <Button
+        onClick={() => setRequestToRender(trade) }
+        variant="contained"
+        color="primary"
+        >
+          Request 
+        </Button>
+      )
+    }           
+  }
+
   // const classes = useStyles();
   return (
     <React.Fragment>
@@ -49,15 +66,8 @@ export default function MyTrades( { user, setRequestToRender } ) {
               <TableCell>{trade.item2.name}</TableCell>
               <TableCell align="right">
 
-                {trade.status === "Pending" ?
-                <Button
-                onClick={() => setRequestToRender(trade) }
-                variant="contained"
-                color="primary"
-                >
-                  Request 
-                </Button>
-                : null }
+                { renderButtonRequest(trade) }
+                
               </TableCell>
             </TableRow>
           ))}

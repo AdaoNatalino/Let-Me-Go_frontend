@@ -62,7 +62,8 @@ export default function ItemCard( { item, user } ) {
   const [item2_id, setItem2_id] = React.useState(null);
 
   const item1_id = item.id
-  const tradeData = { item1_id, item2_id }
+  const requested_by = user.id
+  const tradeData = { item1_id, item2_id, requested_by }
 
   const handleTradeClick = () => {
     API.requestNewTrade(tradeData)
@@ -77,7 +78,7 @@ export default function ItemCard( { item, user } ) {
     setTraded(!traded);
   }
 
-  const itemsOptions = () =>  user.items.map(i => <option key={i.id} value={i.id}>{i.name}</option> )
+  const itemsOptions = () =>  user.available_for_trade.map(i => <option key={i.id} value={i.id}>{i.name}</option> )
 
 
   return (
@@ -108,9 +109,9 @@ export default function ItemCard( { item, user } ) {
       </CardContent> */}
       <CardActions disableSpacing>
 
-        {/* {user !== item.user ? null  :  null}  */}
+        {user.username === item.user.username ? null : 
         
-        <IconButton 
+          <IconButton 
               className={clsx(classes.expand, {
                 [classes.expandOpen]: expanded,
               })}
@@ -121,6 +122,8 @@ export default function ItemCard( { item, user } ) {
 
             <SwapVerticalCircleIcon color="secondary" />
           </IconButton> 
+        }
+        
         
         
        

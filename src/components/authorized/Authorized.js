@@ -12,11 +12,11 @@ import EditProfile from "./EditProfile"
 
 export default function Authorized ({ logOut, user, handlePostAuth }) {
 
-    const [items, setItems] = useState([])
+    // const [items, setItems] = useState([])
 
-    useEffect(() => {
-        API.getAllItems().then(items => setItems(items))
-    }, [])
+    // useEffect(() => {
+    //     API.getAllItems().then(items => setItems(items))
+    // }, [])
    
     return (
         <>
