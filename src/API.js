@@ -11,12 +11,6 @@ const authorizedFetch = (url, options = {}) => {
   })
 }
 
-// const getAllItems = () => {
-//     return authorizedFetch(URL + "items")
-//     .then(resp => resp.json())
-//     .catch(error => console.log(error))
-// }
-
 const getToken = () => localStorage.getItem("jwt");
 
 const createNewUser = (userData) => {
@@ -148,10 +142,15 @@ const approveTradeRequest = (tradeData, id) => {
   })
 }
 
+const getMyItems = (id) => {
+  return authorizedFetch(URL + "myItems/" + id)
+  .then(resp => resp.json())
+  .catch(error => console.log(error))
+}
 
-// approve/:id
+
 
 export default { 
-  createNewUser, logInUser, validateToken, getAllCategories, getChosenCategory, 
+  createNewUser, logInUser, validateToken, getAllCategories, getChosenCategory, getMyItems,
   createNewItem, updateUserInfo, requestNewTrade, getMyTrades, rejectTradeRequest, approveTradeRequest
 }  

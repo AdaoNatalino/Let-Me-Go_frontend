@@ -1,8 +1,9 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { Grid } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 
 import MyItemCard from "./MyItemCard"
+import API from "../../API"
 
 const useStyles = makeStyles({
     gridContainer: {
@@ -12,7 +13,13 @@ const useStyles = makeStyles({
     }
 })
 
-export default function ItemsContainer( { items }) {
+export default function ItemsContainer({ user }) {
+
+    const [items, setItems] = useState([])
+
+  useEffect(() => {
+    API.getMyItems(user.id).then(items => setItems(items))
+  }, [])
 
 
     const renderMyItems = () => items.map(item => {

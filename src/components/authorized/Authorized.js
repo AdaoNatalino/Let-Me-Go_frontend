@@ -1,10 +1,9 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import { Switch, Route } from "react-router-dom";
 
 import NotFound404 from "../NotFound404"
 import ItemsContainer from './ItemsContainer';
 import Home from "../HomeTheme/Home"
-import API from "../../API"
 import AuthMenu from "./AuthMenu"
 import NewItemForm from "./NewItemForm"
 import DashBoard from "./Dashboard"
@@ -12,12 +11,6 @@ import EditProfile from "./EditProfile"
 
 export default function Authorized ({ logOut, user, handlePostAuth }) {
 
-    // const [items, setItems] = useState([])
-
-    // useEffect(() => {
-    //     API.getAllItems().then(items => setItems(items))
-    // }, [])
-   
     return (
         <>
             <AuthMenu

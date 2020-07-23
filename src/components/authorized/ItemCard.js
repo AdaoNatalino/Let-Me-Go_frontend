@@ -118,7 +118,7 @@ export default function ItemCard( { item, user } ) {
               onClick={handleTradingClick}
               aria-expanded={expanded}
               aria-label="show more"
-              aria-label="add to favorites" color="secondary">
+              color="secondary">
 
             <SwapVerticalCircleIcon color="secondary" />
           </IconButton> 
