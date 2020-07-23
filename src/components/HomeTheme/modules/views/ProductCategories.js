@@ -101,7 +101,7 @@ function ProductCategories(props) {
   return (
     <Container className={classes.root} component="section">
       <Typography variant="h4" marked="center" align="center" component="h2">
-        Select the type of stuff you are looking for:
+        Select the category you are looking for:
       </Typography>
       <div className={classes.images}>
         {images.map((image) => (

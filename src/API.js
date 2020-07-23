@@ -128,8 +128,18 @@ const getMyTrades = (id) => {
   .catch(error => console.log(error))
 }
 
+const rejectTradeRequest = (tradeData, id) => {
+  const obj = configObject("PATCH", "trade", tradeData)
+  return authorizedFetch(URL + "trades/" + id, obj)
+  .then((res) => res.json())
+  .then((res) => {
+      console.log(res);
+    return res;
+  })
+}
+
 
 export default { 
   createNewUser, logInUser, validateToken, getAllItems, getAllCategories, getChosenCategory, 
-  createNewItem, updateUserInfo, requestNewTrade, getMyTrades
+  createNewItem, updateUserInfo, requestNewTrade, getMyTrades, rejectTradeRequest
 }  
