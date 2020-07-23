@@ -77,7 +77,7 @@ export default function ItemCard( { item, user } ) {
     setTraded(!traded);
   }
 
-  const itemsOptions = () =>  item.user.items.map(i => <option key={i.id} value={i.id}>{i.name}</option> )
+  const itemsOptions = () =>  user.items.map(i => <option key={i.id} value={i.id}>{i.name}</option> )
 
 
   return (
