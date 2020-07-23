@@ -17,9 +17,8 @@ const useStyles = makeStyles({
     }
 })
 
-export default function Request ({ user, trade }) {
+export default function Request ({ user, trade, comeBackToTrades }) {
     let history = useHistory();
-
 
     const classes = useStyles();
     const item1 = trade.item1
@@ -29,9 +28,9 @@ export default function Request ({ user, trade }) {
 
     const handleReject = () => {
         const tradeData = { status }
-        history.push("/profile")
         API.rejectTradeRequest(tradeData, trade.id)
-        // .then(alert("Request Rejected!"))  
+        .then(alert("Request Rejected!"))  
+        comeBackToTrades()
     }
 
 

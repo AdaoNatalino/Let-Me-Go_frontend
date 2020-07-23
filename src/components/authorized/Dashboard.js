@@ -168,12 +168,16 @@ export default function Dashboard({ logOut, userInfo }) {
     setRender(RENDER.REQUEST)
   }
 
+  const comeBackToTrades = () => {
+    setRender(RENDER.TRADES)
+  }
+
   const [render, setRender] = useState(RENDER.ITEMS)
 
   const renderMyItemsContainer = () => <MyItemsContainer  items={ user.items }/>
   const renderMyTrades = () => <MyTrades user={ user } setRequestToRender={ setRequestToRender } />
   const renderMyFriends = () => <MyFriends  friends={ user }/>
-  const renderRequest = () => <Request user={user} trade={trade} />
+  const renderRequest = () => <Request comeBackToTrades={comeBackToTrades} user={user} trade={trade} />
 
   const whatComponentToRender = () => {
     if(render === RENDER.ITEMS) return renderMyItemsContainer();
