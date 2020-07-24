@@ -88,10 +88,18 @@ export default function EditItem( props ) {
     const itemData = { name, description, condition, category_id, image, user_id }
     console.log(itemData)
     API.updateItemInfo(itemData, props.match.params.id)
-    .then(console.log)
+    .then(resp => handleUpdateResp(resp))
     history.push('/profile')
     clearForm();
   };
+
+  const handleUpdateResp = (resp) => {
+    if (resp.error) {
+      alert(resp.error)
+    } else {
+      alert("Item Updated!")
+    } 
+  }
 
 
   const clearForm = () => {

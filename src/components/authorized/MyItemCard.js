@@ -1,4 +1,7 @@
 import React from 'react';
+import { useHistory } from "react-router-dom";
+
+
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
@@ -12,6 +15,8 @@ import EditIcon from '@material-ui/icons/Edit';
 import ShareIcon from '@material-ui/icons/Share';
 import Link from '@material-ui/core/Link';
 
+import API from "../../API"
+
 
 
 const useStyles = makeStyles({
@@ -23,8 +28,25 @@ const useStyles = makeStyles({
   },
 });
 
-export default function MediaCard({ item }) {
+export default function MyItemCard({ item }) {
   const classes = useStyles();
+
+  let history = useHistory();
+
+  const handleDeleteItem = () => {
+    API.deleteItem(item.id)
+    .then(resp => handleDeleteResp(resp))
+    history.push("/profile")
+  }
+
+
+  const handleDeleteResp = (resp) => {
+    if (resp.error) {
+      alert(resp.error)
+    } else {
+      alert("Item Deleted!")
+    } 
+  }
 
   return (
     <Card className={classes.root}>
@@ -44,17 +66,25 @@ export default function MediaCard({ item }) {
         </CardContent>
       </CardActionArea>
       <CardActions>
-        <IconButton aria-label="add to favorites" color="secondary">
+
+        <IconButton 
+
+          onClick={() => { if(window.confirm('Delete the item?')) { handleDeleteItem() }; }}
+          // onClick={ handleDeleteItem }
+          aria-label="add to favorites" color="secondary">
           <DeleteIcon color="secondary" />
         </IconButton>
+
         <IconButton aria-label="add to favorites" color="secondary">
           <Link color="primary" href={`/itemEdit/${item.id}`} >
             <EditIcon color="primary" />
           </Link>
         </IconButton>
+
         <IconButton aria-label="add to favorites" color="secondary">
           <ShareIcon style={{ color: "green" }} />
         </IconButton>
+
       </CardActions>
     </Card>
   );

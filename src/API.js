@@ -84,7 +84,7 @@ const createNewItem = (itemData) => {
     })
 }
 
-const configObject = (request, key, data) => {
+const configObject = (request, key = "", data = "") => {
   const obj = {
     method: request,
     headers: {
@@ -166,8 +166,18 @@ const updateItemInfo = (itemData, id) => {
 }
 
 
+const deleteItem = (id) => {
+  const obj = configObject("DELETE")
+  return authorizedFetch(URL + "items/" + id, obj)
+  // .then((res) => res.json())
+  // .then((res) => {
+  //     console.log(res);
+  //   return res;
+  // })
+}
+
 export default { 
   createNewUser, logInUser, validateToken, getAllCategories, getChosenCategory, getMyItems,
   createNewItem, updateUserInfo, requestNewTrade, getMyTrades, rejectTradeRequest, approveTradeRequest,
-  getChosenItem, updateItemInfo
+  getChosenItem, updateItemInfo, deleteItem
 }  
