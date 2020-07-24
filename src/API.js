@@ -149,8 +149,25 @@ const getMyItems = (id) => {
 }
 
 
+const getChosenItem = (itemId) => {
+  return authorizedFetch(URL + "items/" + itemId)
+  .then(resp => resp.json())
+  .catch(error => console.log(error))
+}
+
+const updateItemInfo = (itemData, id) => {
+  const obj = configObject("PATCH", "item", itemData)
+  return authorizedFetch(URL + "items/" + id, obj)
+    .then((res) => res.json())
+    .then((res) => {
+        console.log(res);
+      return res;
+    })
+}
+
 
 export default { 
   createNewUser, logInUser, validateToken, getAllCategories, getChosenCategory, getMyItems,
-  createNewItem, updateUserInfo, requestNewTrade, getMyTrades, rejectTradeRequest, approveTradeRequest
+  createNewItem, updateUserInfo, requestNewTrade, getMyTrades, rejectTradeRequest, approveTradeRequest,
+  getChosenItem, updateItemInfo
 }  

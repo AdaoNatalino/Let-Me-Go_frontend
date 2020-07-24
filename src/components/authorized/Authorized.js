@@ -8,6 +8,7 @@ import AuthMenu from "./AuthMenu"
 import NewItemForm from "./NewItemForm"
 import DashBoard from "./Dashboard"
 import EditProfile from "./EditProfile"
+import EditItem from "./EditItem"
 
 export default function Authorized ({ logOut, user, handlePostAuth }) {
 
@@ -50,6 +51,15 @@ export default function Authorized ({ logOut, user, handlePostAuth }) {
                         <EditProfile {...routerProps}
                         user={user}
                         handlePostAuth={handlePostAuth}
+                        />
+                    }
+                />
+                <Route 
+                    exact 
+                    path="/itemEdit/:id" 
+                    render={routerProps =>
+                        <EditItem {...routerProps}
+                        user={user}
                         />
                     }
                 />
