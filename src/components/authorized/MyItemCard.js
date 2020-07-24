@@ -28,7 +28,7 @@ const useStyles = makeStyles({
   },
 });
 
-export default function MyItemCard({ item }) {
+export default function MyItemCard({ item, setComponent }) {
   const classes = useStyles();
 
   let history = useHistory();
@@ -44,6 +44,7 @@ export default function MyItemCard({ item }) {
     if (resp.error) {
       alert(resp.error)
     } else {
+      setComponent()
       alert("Item Deleted!")
     } 
   }
@@ -70,7 +71,6 @@ export default function MyItemCard({ item }) {
         <IconButton 
 
           onClick={() => { if(window.confirm('Delete the item?')) { handleDeleteItem() }; }}
-          // onClick={ handleDeleteItem }
           aria-label="add to favorites" color="secondary">
           <DeleteIcon color="secondary" />
         </IconButton>

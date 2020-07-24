@@ -23,6 +23,7 @@ export default function ItemsContainer(props) {
         .then( categoryItems => setItems(categoryItems) )
     }, [])
 
+   
     const renderItems = () => items.map(item => {
         return(
             <Grid key={item.name} item xs={12} sm={6} md={4}>

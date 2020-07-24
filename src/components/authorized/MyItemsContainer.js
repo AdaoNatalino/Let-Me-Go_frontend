@@ -17,15 +17,17 @@ export default function ItemsContainer({ user }) {
 
     const [items, setItems] = useState([])
 
-  useEffect(() => {
-    API.getMyItems(user.id).then(items => setItems(items))
-  }, [])
+    useEffect(() => {
+    setComponent()
+    }, [])
+
+  const setComponent = () => API.getMyItems(user.id).then(items => setItems(items))
 
 
     const renderMyItems = () => items.map(item => {
         return(
             <Grid key={item.name} item xs={12} sm={6} md={3}>
-                <MyItemCard key={item.id} item={item}/>
+                <MyItemCard key={item.id} item={item} setComponent={setComponent}/>
             </Grid>   
         )
     })
