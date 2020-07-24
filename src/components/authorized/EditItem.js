@@ -87,10 +87,10 @@ export default function EditItem( props ) {
     e.preventDefault();
     const itemData = { name, description, condition, category_id, image, user_id }
     console.log(itemData)
-    // API.updateItemInfo(itemData, props.match.params.id)
-    // .then(console.log)
-    // history.push('/profile')
-    // clearForm();
+    API.updateItemInfo(itemData, props.match.params.id)
+    .then(console.log)
+    history.push('/profile')
+    clearForm();
   };
 
 
