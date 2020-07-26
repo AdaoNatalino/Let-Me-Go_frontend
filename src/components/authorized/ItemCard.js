@@ -111,27 +111,28 @@ export default function ItemCard( { item, user } ) {
       <CardActions disableSpacing>
 
         {user.username === item.user.username ? null : 
-        
-          <IconButton 
-              className={clsx(classes.expand, {
-                [classes.expandOpen]: expanded,
-              })}
-              onClick={handleTradingClick}
-              aria-expanded={expanded}
-              aria-label="show more"
-              color="secondary">
+          <>
+            <IconButton 
+                className={clsx(classes.expand, {
+                  [classes.expandOpen]: expanded,
+                })}
+                onClick={handleTradingClick}
+                aria-expanded={expanded}
+                aria-label="show more"
+                color="secondary">
 
-            <SwapVerticalCircleIcon color="secondary" />
-          </IconButton> 
+              <SwapVerticalCircleIcon color="secondary" />
+            </IconButton> 
+            <IconButton aria-label="share" color="primary">
+              <SaveIcon color="primary"/>
+            </IconButton>
+         </>
         }
-        
         
         
        
 
-        <IconButton aria-label="share" color="primary">
-          <SaveIcon color="primary"/>
-        </IconButton>
+       
         <IconButton
           className={clsx(classes.expand, {
             [classes.expandOpen]: expanded,

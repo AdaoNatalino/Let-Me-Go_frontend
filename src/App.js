@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Authorized from './components/authorized/Authorized';
 import Unauthorized from './components/unauthorized/Unauthorized';
 import NotFound404 from "./components/NotFound404"
-
+import AppFooter from './components/AppFooter';
 
 import API from './API'
 import './App.css';
@@ -52,6 +52,7 @@ function App() {
             <NotFound404 />
           </Route>
         </Switch>
+        <AppFooter/>
       </Router>
     </div>
   );
