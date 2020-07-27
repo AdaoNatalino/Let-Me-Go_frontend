@@ -272,7 +272,7 @@ export default function Dashboard({ logOut, userInfo }) {
           <List>
             
             <div>
-              <Link color="inherit" href="/newItem">
+              <Link color="inherit" to="/newItem">
               <ListItem button>
                 <ListItemIcon>
                   <AddToPhotosIcon />
