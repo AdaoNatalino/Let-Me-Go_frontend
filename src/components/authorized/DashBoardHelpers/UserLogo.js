@@ -22,7 +22,7 @@ export default function Deposits( { user } ) {
         <img src={user.avatar} alt="" width="110px"/>
       </Typography>
       <div>
-        <Link color="primary" href="/edit" >
+        <Link color="primary" to="/edit" >
           Edit Profile
         </Link>
       </div>
