@@ -9,6 +9,7 @@ import NewItemForm from "./NewItemForm"
 import DashBoard from "./Dashboard"
 import EditProfile from "./EditProfile"
 import EditItem from "./EditItem"
+import AppFooter from '../AppFooter';
 
 export default function Authorized ({ logOut, user, handlePostAuth }) {
 
@@ -23,6 +24,7 @@ export default function Authorized ({ logOut, user, handlePostAuth }) {
                     <Home
                     user={user}
                     />
+                    <AppFooter/>
                 </Route>
                 <Route exact path="/newItem">
                     <NewItemForm

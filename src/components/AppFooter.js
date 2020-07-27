@@ -25,7 +25,7 @@ function Copyright() {
 const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',
-    backgroundColor: "white",
+    backgroundColor: "#2d2d2d",
   },
   container: {
     marginTop: theme.spacing(8),
@@ -42,8 +42,6 @@ const useStyles = makeStyles((theme) => ({
     width: 48,
     height: 48,
     display: 'flex',
-    // justifyContent: 'center',
-    // alignItems: 'center',
     backgroundColor: theme.palette.warning.main,
     marginRight: theme.spacing(1),
     '&:hover': {
@@ -74,7 +72,7 @@ export default function AppFooter() {
       <Container className={classes.container}>
         <Grid container spacing={5}>
           <Grid item xs={6} sm={4} md={3}>
-          <Typography variant="h6" marked="left" gutterBottom>
+          <Typography variant="h6" marked="left" gutterBottom style={{color: "white"}}>
               Adao Natalino
             </Typography>
             <Grid
@@ -87,13 +85,13 @@ export default function AppFooter() {
             
               <Grid item className={classes.icons}>
                 
-                <Link color="primary" href="https://github.com/AdaoNatalino" target="_blank" >
-                  <GitHubIcon/> GitHub
+                <Link  style={{color: "white"}} href="https://github.com/AdaoNatalino" target="_blank" >
+                  <GitHubIcon /> GitHub
                 </Link>
               </Grid>
               <Grid item className={classes.icons}>
 
-                <Link color="primary" href="https://www.linkedin.com/in/adao-natalino-9bb85a89/" target="_blank" >
+                <Link style={{color: "white"}} href="https://www.linkedin.com/in/adao-natalino-9bb85a89/" target="_blank" >
                   <LinkedInIcon/> LinkedIn
                 </Link>
               </Grid>
@@ -102,29 +100,32 @@ export default function AppFooter() {
             </Grid>
           </Grid>
           <Grid item xs={6} sm={4} md={2}>
-            <Typography variant="h6" marked="left" gutterBottom>
-              Legal
+            <Typography variant="h6" marked="left" gutterBottom style={{color: "white"}}>
+              Let Me Go!
             </Typography>
-            <ul className={classes.list}>
+            <ul className={classes.list} style={{color: "white"}}>
               <li className={classes.listItem}>
-                <Link href="">Terms</Link>
+                <span>Did you enjoy the app?</span>
               </li>
               <li className={classes.listItem}>
-                <Link href="">Privacy</Link>
+                <span>Get in touch, send comments and suggestions!</span>
               </li>
             </ul>
           </Grid>
-          <Grid item xs={6} sm={8} md={4}>
-            <Typography variant="h6" marked="left" gutterBottom>
-            Algo Aqui
+          <Grid item xs={6} sm={8} md={4} style={{color: "white"}}>
+            <Typography variant="h6" marked="left" gutterBottom style={{color: "white"}}>
+            About me
             </Typography>
-          
+            <ul className={classes.list}>
+              <li className={classes.listItem}><br></br>
+                <span>A Software Engineer with a Mechanical Engineer background that loves learning new things.</span>
+              </li>
+              <li>
+              <Copyright style={{color: "white"}}/>
+              </li>
+            </ul>
           </Grid>
-          
-        
-          
         </Grid>
-        
       </Container>
       
     </Typography>

@@ -6,6 +6,7 @@ import SignUp from "./SignUp"
 import NotFound404 from "../NotFound404"
 import Home from "../HomeTheme/Home"
 import UnAuthMenu from "./UnAuthMenu"
+import AppFooter from "../AppFooter"
 
 
 export default function Unauthorized ({ handlePostAuth, user }) {
@@ -18,6 +19,7 @@ export default function Unauthorized ({ handlePostAuth, user }) {
                     <Home
                     user={user}
                     />
+                    <AppFooter/>
                 </Route>
                 <Route exact path="/login">
                     <SignIn

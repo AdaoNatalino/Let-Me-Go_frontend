@@ -140,8 +140,23 @@ export default function Dashboard({ logOut, userInfo }) {
   const [user, setUser] = useState(userInfo)
   const [trade, setTrade] = useState(null)
 
+  const [trades, setTrades] = useState([])
+
+  const [notifications, setNotifications] = useState(null)
+
+  const getNotifications = () => {
+    const array = trades.filter(trade => trade.requested_by !== user.id && trade.status === "Pending")
+    const numberOfTrue = array.length
+    setNotifications(numberOfTrue)
+  } 
 
   useEffect(() => {
+    getNotifications()
+  }, [trades])
+
+  useEffect(() => {
+    API.getMyTrades(user.id).then(trades => setTrades(trades))
+
     if (localStorage.getItem('jwt')) 
     API.validateToken().then(resp => setUser(resp.user))
   }, [])
@@ -221,8 +236,10 @@ export default function Dashboard({ logOut, userInfo }) {
                 <MailIcon />
               </Badge>
           </IconButton>
-            <IconButton aria-label="show 11 new notifications" color="inherit">
-              <Badge badgeContent={1} color="secondary">
+            <IconButton aria-label="show 11 new notifications" color="inherit"
+            onClick={ ()=> setRender(RENDER.TRADES) }
+            >
+              <Badge badgeContent={notifications} color="secondary">
                 <NotificationsIcon />
               </Badge>
           </IconButton>
