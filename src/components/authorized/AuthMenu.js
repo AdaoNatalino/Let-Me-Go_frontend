@@ -82,7 +82,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function AuthMenu({ logOut, user }) {
+export default function AuthMenu({ logOut }) {
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
@@ -91,11 +91,11 @@ export default function AuthMenu({ logOut, user }) {
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
   let history = useHistory();
 
-  const [trades, setTrades] = React.useState([])
+  // const [trades, setTrades] = React.useState([])
   
-  useEffect(() => {
-    API.getMyTrades(user.id).then(resp => setTrades(resp))
-  }, [])
+  // useEffect(() => {
+  //   API.getMyTrades(user.id).then(resp => setTrades(resp))
+  // }, [])
 
   
   const handleProfileMenuOpen = (event) => {
