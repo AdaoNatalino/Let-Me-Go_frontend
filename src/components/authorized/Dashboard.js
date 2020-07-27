@@ -146,19 +146,22 @@ export default function Dashboard({ logOut, userInfo }) {
 
   const getNotifications = () => {
     const array = trades.filter(trade => trade.requested_by !== user.id && trade.status === "Pending")
-    const numberOfTrue = array.length
-    setNotifications(numberOfTrue)
+    setNotifications(array.length)
   } 
-
+ 
   useEffect(() => {
     getNotifications()
   }, [trades])
 
-  useEffect(() => {
+  const setTradesAndValidate = () => {
+    setTrades([])
     API.getMyTrades(user.id).then(trades => setTrades(trades))
-
     if (localStorage.getItem('jwt')) 
     API.validateToken().then(resp => setUser(resp.user))
+  }
+
+  useEffect(() => {
+    setTradesAndValidate()
   }, [])
 
   const classes = useStyles();
@@ -192,7 +195,9 @@ export default function Dashboard({ logOut, userInfo }) {
   const renderMyItemsContainer = () => <MyItemsContainer  user={user}/>
   const renderMyTrades = () => <MyTrades user={ user } setRequestToRender={ setRequestToRender } />
   const renderMyFriends = () => <MyFriends  friends={ user }/>
-  const renderRequest = () => <Request comeBackToTrades={comeBackToTrades} user={user} trade={trade} />
+  const renderRequest = () => <Request comeBackToTrades={comeBackToTrades} 
+  setTradesAndValidate={ setTradesAndValidate }
+  user={user} trade={trade} />
 
   const whatComponentToRender = () => {
     if(render === RENDER.ITEMS) return renderMyItemsContainer();
@@ -231,11 +236,11 @@ export default function Dashboard({ logOut, userInfo }) {
           >
             Dashboard
           </Typography>
-            <IconButton aria-label="show 4 new mails" color="inherit">
+            {/* <IconButton aria-label="show 4 new mails" color="inherit">
               <Badge badgeContent={1} color="secondary">
                 <MailIcon />
               </Badge>
-          </IconButton>
+          </IconButton> */}
             <IconButton aria-label="show 11 new notifications" color="inherit"
             onClick={ ()=> setRender(RENDER.TRADES) }
             >
@@ -285,12 +290,12 @@ export default function Dashboard({ logOut, userInfo }) {
                 <ListItemText primary="My Trades" />
               </ListItem>
 
-              <ListItem button onClick={ ()=> setRender(RENDER.FRIENDS) }>
+              {/* <ListItem button onClick={ ()=> setRender(RENDER.FRIENDS) }>
                 <ListItemIcon>
                   <PeopleIcon />
                 </ListItemIcon>
                 <ListItemText primary="Friends" />
-              </ListItem>
+              </ListItem> */}
 
               <ListItem button onClick={ ()=> setRender(RENDER.ITEMS) }>
                 <ListItemIcon>

@@ -15,7 +15,7 @@ const useStyles = makeStyles({
     }
 })
 
-export default function Request ({ user, trade, comeBackToTrades }) {
+export default function Request ({ trade, comeBackToTrades, setTradesAndValidate }) {
 
     const classes = useStyles();
     const item1 = trade.item1
@@ -27,14 +27,16 @@ export default function Request ({ user, trade, comeBackToTrades }) {
     const handleReject = () => {
         const tradeData = { statusRejected }
         API.rejectTradeRequest(tradeData, trade.id)
-        .then(alert("Request Rejected!"))  
+        .then(alert("Request Rejected!")) 
+        setTradesAndValidate() 
         comeBackToTrades()
     }
 
     const handleApprove = () => {
         const tradeData = { statusApproved }
         API.approveTradeRequest(tradeData, trade.id)
-        .then(alert("Request Approved!"))  
+        .then(alert("Request Approved!"))
+        setTradesAndValidate()   
         comeBackToTrades()
     }
 

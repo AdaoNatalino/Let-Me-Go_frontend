@@ -2,6 +2,21 @@ import React from 'react';
 import { useHistory } from "react-router-dom";
 
 
+import {
+  EmailIcon,
+  FacebookIcon,
+  FacebookMessengerIcon,
+  InstapaperIcon,
+  LineIcon,
+  LinkedinIcon,
+  LivejournalIcon,
+  RedditIcon,
+  TelegramIcon,
+  TumblrIcon,
+  TwitterIcon,
+  WhatsappIcon,
+} from "react-share"
+
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
@@ -82,7 +97,8 @@ export default function MyItemCard({ item, setComponent }) {
         </IconButton>
 
         <IconButton aria-label="add to favorites" color="secondary">
-          <ShareIcon style={{ color: "green" }} />
+          {/* <ShareIcon style={{ color: "green" }} /> */}
+          <FacebookIcon/>
         </IconButton>
 
       </CardActions>
