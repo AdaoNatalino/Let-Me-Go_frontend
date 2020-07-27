@@ -27,9 +27,7 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 import BusinessCenterIcon from '@material-ui/icons/BusinessCenter';
 import ListItemText from '@material-ui/core/ListItemText';
 import AddToPhotosIcon from '@material-ui/icons/AddToPhotos';
-import PeopleIcon from '@material-ui/icons/People';
 import MyItemsContainer from "./MyItemsContainer"
-import MailIcon from '@material-ui/icons/Mail';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 
 import UserLogo from './DashBoardHelpers/UserLogo';
