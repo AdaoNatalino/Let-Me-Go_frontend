@@ -23,8 +23,6 @@ import EditIcon from '@material-ui/icons/Edit';
 
 import API from "../../API"
 
-
-
 const useStyles = makeStyles({
   root: {
     maxWidth: 180,
@@ -114,22 +112,16 @@ export default function MyItemCard({ item, setComponent }) {
         </IconButton>
 
         <IconButton aria-label="edit item" color="secondary">
-          {/* <Link color="primary" href={`/itemEdit/${item.id}`} >
-            <EditIcon color="primary" />
-          </Link> */}
+          
         </IconButton>
         <IconButton aria-label="edit item" color="secondary">
-          {/* <Link color="primary" href={`/itemEdit/${item.id}`} >
-            <EditIcon color="primary" />
-          </Link> */}
+         
         </IconButton>
 
        <IconButton 
           onClick={() => history.push(`/itemEdit/${item.id}`)}  
           aria-label="edit item" color="secondary">
-          {/* <Link color="primary" href={`/itemEdit/${item.id}`} > */}
             <EditIcon color="primary" />
-          {/* </Link> */}
         </IconButton>          
 
       </CardActions>

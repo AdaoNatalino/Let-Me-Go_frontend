@@ -9,7 +9,9 @@ const useStyles = makeStyles({
     gridContainer: {
         paddingLeft: "20px",
         paddingRight: "20px",
-        paddingTop: "20px"
+        paddingTop: "20px",
+        paddingBottom: "200px",
+        backgroundColor: "gray"
     }
 })
 

@@ -120,6 +120,7 @@ const useStyles = makeStyles((theme) => ({
   container: {
     paddingTop: theme.spacing(4),
     paddingBottom: theme.spacing(4),
+    // backgroundColor: "#696969"
   },
   paper: {
     padding: theme.spacing(2),
@@ -337,7 +338,9 @@ export default function Dashboard({ logOut, userInfo }) {
             </Grid>
             {/* Recent Orders */}
             <Grid item xs={12}>
-              <Paper className={classes.paper}>
+              <Paper className={classes.paper} 
+              // style={{backgroundColor: "black"}}
+              >
                 {/* <Orders /> */}
               </Paper>
             </Grid>

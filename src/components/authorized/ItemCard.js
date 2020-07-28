@@ -10,6 +10,7 @@ import {
   FacebookIcon,
 } from "react-share";
 
+
 import { makeStyles } from '@material-ui/core/styles';
 import clsx from 'clsx';
 import Card from '@material-ui/core/Card';
@@ -164,6 +165,8 @@ export default function ItemCard( { item, user } ) {
               <TwitterIcon size={21} round />
             </TwitterShareButton>
           </IconButton>
+       
+
        
         <IconButton
           className={clsx(classes.expand, {
