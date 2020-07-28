@@ -250,7 +250,7 @@ export default function EditItem( props ) {
             <Button variant="contained"
               style={{color: "green"}}
               onClick={() => history.goBack()}>
-                Back to Profile
+                Back to Dashboard
               </Button>
             </Grid>
           </Grid>

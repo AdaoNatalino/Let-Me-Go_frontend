@@ -20,7 +20,6 @@ import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
 import DeleteIcon from '@material-ui/icons/Delete';
 import EditIcon from '@material-ui/icons/Edit';
-import Link from '@material-ui/core/Link';
 
 import API from "../../API"
 
@@ -68,6 +67,7 @@ export default function MyItemCard({ item, setComponent }) {
         />
         <CardContent>
           <Typography gutterBottom variant="h6" component="h6">
+
           <IconButton aria-label="add to favorites" color="secondary">
             <FacebookShareButton
               url={shareUrl}
@@ -79,7 +79,6 @@ export default function MyItemCard({ item, setComponent }) {
           </IconButton>
 
           <IconButton aria-label="add to favorites" color="secondary">
-
             <WhatsappShareButton
               url={shareUrl}
               title={title}
@@ -90,7 +89,6 @@ export default function MyItemCard({ item, setComponent }) {
           </IconButton>
 
           <IconButton aria-label="add to favorites" color="secondary">
-
             <TwitterShareButton
               url={shareUrl}
               title={title}
@@ -103,7 +101,7 @@ export default function MyItemCard({ item, setComponent }) {
           </Typography>
 
           <Typography variant="body2" color="textSecondary" component="p">
-            {item.condition}
+            {item.condition.toUpperCase()}
           </Typography>
         </CardContent>
       </CardActionArea>

@@ -1,6 +1,14 @@
 import React from 'react';
 import { useHistory } from "react-router-dom";
 
+import {
+  FacebookShareButton,
+  TwitterIcon,
+  TwitterShareButton,
+  WhatsappIcon,
+  WhatsappShareButton,
+  FacebookIcon,
+} from "react-share";
 
 import { makeStyles } from '@material-ui/core/styles';
 import clsx from 'clsx';
@@ -15,14 +23,12 @@ import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import { red } from '@material-ui/core/colors';
 import SwapVerticalCircleIcon from '@material-ui/icons/SwapVerticalCircle';
-import SaveIcon from '@material-ui/icons/Save';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import Select from '@material-ui/core/Select';
 import InputLabel from '@material-ui/core/InputLabel';
 import FormControl from '@material-ui/core/FormControl';
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
-
 
 import API from "../../API"
 
@@ -55,6 +61,9 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function ItemCard( { item, user } ) {
+
+  const shareUrl = 'https://let-me-go.netlify.app/';
+  const title = 'LET ME GO!';
   let history = useHistory();
 
   const classes = useStyles();
@@ -118,20 +127,43 @@ export default function ItemCard( { item, user } ) {
                 })}
                 onClick={handleTradingClick}
                 aria-expanded={expanded}
-                aria-label="show more"
                 color="secondary">
 
-              <SwapVerticalCircleIcon color="secondary" />
+              <SwapVerticalCircleIcon color="secondary" style={{fontSize: "27px"}}/>
             </IconButton> 
-            <IconButton aria-label="share" color="primary">
-              <SaveIcon color="primary"/>
-            </IconButton>
+
          </>
         }
         
-        
-       
+        <IconButton  color="secondary">
+            <FacebookShareButton
+              url={shareUrl}
+              quote={title}
+              className="share-button"
+            >
+              <FacebookIcon size={21} round />
+            </FacebookShareButton>
+          </IconButton>
 
+          <IconButton  color="secondary">
+            <WhatsappShareButton
+              url={shareUrl}
+              title={title}
+              className="share-button"
+            >
+              <WhatsappIcon size={21} round />
+            </WhatsappShareButton>
+          </IconButton>
+
+          <IconButton  color="secondary">
+            <TwitterShareButton
+              url={shareUrl}
+              title={title}
+              className="share-button"
+            >
+              <TwitterIcon size={21} round />
+            </TwitterShareButton>
+          </IconButton>
        
         <IconButton
           className={clsx(classes.expand, {

@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useHistory } from "react-router-dom";
 
-
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -17,8 +16,6 @@ import Container from '@material-ui/core/Container';
 import Select from '@material-ui/core/Select';
 import InputLabel from '@material-ui/core/InputLabel';
 import FormControl from '@material-ui/core/FormControl';
-
-
 
 import API from '../../API';
 
@@ -241,7 +238,7 @@ export default function NewItemForm({ user }) {
               <Button variant="contained"
               style={{color: "green"}}
               onClick={() => history.goBack()}>
-                Back to Profile
+                Back to Dashboard
               </Button>
             </Grid>
           </Grid>

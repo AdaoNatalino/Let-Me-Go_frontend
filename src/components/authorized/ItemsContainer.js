@@ -35,7 +35,7 @@ export default function ItemsContainer(props) {
     
     return (
         <Grid 
-        container spacing={4} 
+        container spacing={1} 
         justify="center"
         className={classes.gridContainer}>
             { renderItems() }
