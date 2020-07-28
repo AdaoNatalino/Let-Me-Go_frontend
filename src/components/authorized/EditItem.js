@@ -247,9 +247,11 @@ export default function EditItem( props ) {
          
           <Grid container justify="flex-end">
             <Grid item>
-              <Link href="/profile" variant="body2">
+            <Button variant="contained"
+              style={{color: "green"}}
+              onClick={() => history.goBack()}>
                 Back to Profile
-              </Link>
+              </Button>
             </Grid>
           </Grid>
         </form>

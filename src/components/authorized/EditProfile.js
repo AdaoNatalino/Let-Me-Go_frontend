@@ -121,6 +121,7 @@ export default function EditProfile({ handlePostAuth, user  }) {
                 value={password}
                 autoComplete="password"
                 name="password"
+                type="password"
                 variant="outlined"
                 required
                 fullWidth

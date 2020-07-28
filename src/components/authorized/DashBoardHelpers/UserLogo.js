@@ -1,7 +1,11 @@
 import React from 'react';
-import Link from '@material-ui/core/Link';
+import { useHistory } from "react-router-dom";
+
+
 import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
+import Button from '@material-ui/core/Button';
+
 
 const useStyles = makeStyles({
   depositContext: {
@@ -10,6 +14,8 @@ const useStyles = makeStyles({
 });
 
 export default function Deposits( { user } ) {
+
+  let history = useHistory()
   const classes = useStyles();
   return (
     <React.Fragment>
@@ -22,9 +28,11 @@ export default function Deposits( { user } ) {
         <img src={user.avatar} alt="" width="110px"/>
       </Typography>
       <div>
-        <Link color="primary" href="/edit" >
-          Edit Profile
-        </Link>
+        <Button variant="contained"
+          style={{color: "green"}}
+          onClick={() => history.push("/edit")}>
+            Edit Profile
+        </Button>
       </div>
     </React.Fragment>
   );

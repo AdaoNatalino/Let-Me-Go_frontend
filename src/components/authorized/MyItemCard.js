@@ -55,8 +55,8 @@ export default function MyItemCard({ item, setComponent }) {
     } 
   }
 
-  const shareUrl = 'http://github.com';
-  const title = 'GitHub';
+  const shareUrl = 'https://let-me-go.netlify.app/';
+  const title = 'LET ME GO!';
   
   return (
     <Card className={classes.root}>
@@ -79,11 +79,10 @@ export default function MyItemCard({ item, setComponent }) {
           </IconButton>
 
           <IconButton aria-label="add to favorites" color="secondary">
-          {/* <ShareIcon style={{ color: "green" }} /> */}
+
             <WhatsappShareButton
               url={shareUrl}
               title={title}
-              // separator=":: "
               className="share-button"
             >
               <WhatsappIcon size={23} round />
@@ -127,10 +126,12 @@ export default function MyItemCard({ item, setComponent }) {
           </Link> */}
         </IconButton>
 
-       <IconButton aria-label="edit item" color="secondary">
-          <Link color="primary" href={`/itemEdit/${item.id}`} >
+       <IconButton 
+          onClick={() => history.push(`/itemEdit/${item.id}`)}  
+          aria-label="edit item" color="secondary">
+          {/* <Link color="primary" href={`/itemEdit/${item.id}`} > */}
             <EditIcon color="primary" />
-          </Link>
+          {/* </Link> */}
         </IconButton>          
 
       </CardActions>

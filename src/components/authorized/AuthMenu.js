@@ -11,7 +11,6 @@ import MenuIcon from '@material-ui/icons/Menu';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 
 import MoreIcon from '@material-ui/icons/MoreVert';
-import Link from '@material-ui/core/Link';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -87,13 +86,7 @@ export default function AuthMenu({ logOut }) {
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
   let history = useHistory();
 
-  // const [trades, setTrades] = React.useState([])
-  
-  // useEffect(() => {
-  //   API.getMyTrades(user.id).then(resp => setTrades(resp))
-  // }, [])
-
-  
+    
   const handleProfileMenuOpen = (event) => {
     setAnchorEl(event.currentTarget);
   };
@@ -145,22 +138,7 @@ export default function AuthMenu({ logOut }) {
       open={isMobileMenuOpen}
       onClose={handleMobileMenuClose}
     >
-      {/* <MenuItem>
-        <IconButton aria-label="show 4 new mails" color="inherit">
-          <Badge badgeContent={10} color="secondary">
-            <MailIcon />
-          </Badge>
-        </IconButton>
-        <p>Messages</p>
-      </MenuItem>
-      <MenuItem>
-        <IconButton aria-label="show 11 new notifications" color="inherit">
-          <Badge badgeContent={notifications} color="secondary">
-            <NotificationsIcon />
-          </Badge>
-        </IconButton>
-        <p>Notifications</p>
-      </MenuItem> */}
+   
       <MenuItem onClick={handleProfileMenuOpen}>
         <IconButton
           aria-label="account of current user"
@@ -179,8 +157,8 @@ export default function AuthMenu({ logOut }) {
     <div className={classes.grow}>
       <AppBar style={{ backgroundColor: 'black' }}  position="static">
         <Toolbar>
-          <Link href="/" style={{ color: 'white' }}>
             <IconButton
+              onClick={ ()=> history.push("/") }
               edge="start"
               className={classes.menuButton}
               color="inherit"
@@ -188,20 +166,10 @@ export default function AuthMenu({ logOut }) {
             >
               <MenuIcon />
             </IconButton>
-          </Link>
         
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}>
-            {/* <IconButton aria-label="show 4 new mails" color="inherit">
-              <Badge badgeContent={4} color="secondary">
-                <MailIcon />
-              </Badge>
-            </IconButton>
-            <IconButton aria-label="show new notifications" color="inherit">
-              <Badge badgeContent={notifications} color="secondary">
-                <NotificationsIcon />
-              </Badge>
-            </IconButton> */}
+       
             <IconButton
               edge="end"
               aria-label="account of current user"

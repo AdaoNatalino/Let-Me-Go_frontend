@@ -39,7 +39,7 @@ function ProductHero(props) {
         alt="increase priority"
       />
       <Typography color="inherit" align="center" variant="h2" marked="center">
-      EXCHANGE.TRADE.BARTER!
+      EXCHANGE! TRADE! BARTER!
       </Typography>
       <Typography
         color="inherit"

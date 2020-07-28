@@ -272,14 +272,13 @@ export default function Dashboard({ logOut, userInfo }) {
           <List>
             
             <div>
-              <Link color="inherit" href="/newItem">
-              <ListItem button>
+
+              <ListItem button onClick={ ()=> history.push("/newItem") }>
                 <ListItemIcon>
                   <AddToPhotosIcon />
                 </ListItemIcon>
                 <ListItemText primary="Add Item" />
               </ListItem>
-              </Link>
 
               <ListItem button onClick={ ()=> setRender(RENDER.TRADES) }>
                 <ListItemIcon>

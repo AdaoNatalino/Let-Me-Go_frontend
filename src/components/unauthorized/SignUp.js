@@ -63,7 +63,6 @@ export default function SignUp({ handlePostAuth }) {
   const handleSignUp = (e) => {
     e.preventDefault();
     const userData = { name, email, username, password, city, avatar, bio }
-    // console.log(userData)
     history.push('/')
     API.createNewUser(userData)
     .then(handlePostAuth)

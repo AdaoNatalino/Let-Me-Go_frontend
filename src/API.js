@@ -1,5 +1,5 @@
-// const URL = `http://localhost:3001/`
-const URL = "https://let-me-go.herokuapp.com/"
+const URL = `http://localhost:3001/`
+// const URL = "https://let-me-go.herokuapp.com/"
 
 const authorizedFetch = (url, options = {}) => {
   return fetch(url, {
@@ -80,7 +80,6 @@ const createNewItem = (itemData) => {
   })
     .then((res) => res.json())
     .then((res) => {
-        console.log(res);
       return res;
     })
 }
@@ -102,7 +101,6 @@ const updateUserInfo = (userData, id) => {
   return authorizedFetch(URL + "users/" + id, obj)
     .then((res) => res.json())
     .then((res) => {
-        console.log(res);
       return res;
     })
 }
@@ -112,7 +110,6 @@ const requestNewTrade = (tradeData) => {
   return authorizedFetch(URL + "trades", obj)
   .then((res) => res.json())
   .then((res) => {
-      console.log(res);
     return res;
   })
 }
@@ -128,7 +125,6 @@ const rejectTradeRequest = (tradeData, id) => {
   return authorizedFetch(URL + "trades/" + id, obj)
   .then((res) => res.json())
   .then((res) => {
-      console.log(res);
     return res;
   })
 }
@@ -138,7 +134,6 @@ const approveTradeRequest = (tradeData, id) => {
   return authorizedFetch(URL + "approve/" + id, obj)
   .then((res) => res.json())
   .then((res) => {
-      console.log(res);
     return res;
   })
 }
@@ -161,7 +156,6 @@ const updateItemInfo = (itemData, id) => {
   return authorizedFetch(URL + "items/" + id, obj)
     .then((res) => res.json())
     .then((res) => {
-        console.log(res);
       return res;
     })
 }
@@ -170,11 +164,6 @@ const updateItemInfo = (itemData, id) => {
 const deleteItem = (id) => {
   const obj = configObject("DELETE")
   return authorizedFetch(URL + "items/" + id, obj)
-  // .then((res) => res.json())
-  // .then((res) => {
-  //     console.log(res);
-  //   return res;
-  // })
 }
 
 export default { 
