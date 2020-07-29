@@ -4,7 +4,8 @@ import { withStyles } from '@material-ui/core/styles';
 import Typography from '../components/Typography';
 import ProductHeroLayout from './ProductHeroLayout';
 
-const backgroundImage =
+const backgroundImage = 
+// 'https://www.indianweb2.com/wp-content/uploads/2015/05/barter_system.jpg'
   'https://miro.medium.com/max/12000/1*cuOXHtuMPGpudm93fhklww.jpeg';
 
 const styles = (theme) => ({

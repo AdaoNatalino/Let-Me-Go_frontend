@@ -11,7 +11,7 @@ const useStyles = makeStyles({
         paddingRight: "20px",
         paddingTop: "20px",
         paddingBottom: "200px",
-        backgroundColor: "gray"
+        backgroundColor: "#F0FFF0"
     }
 })
 
