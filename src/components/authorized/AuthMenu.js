@@ -122,6 +122,7 @@ export default function AuthMenu({ logOut }) {
         >Profile </MenuItem>
       <MenuItem onClick={() => {
         handleMenuClose()
+        history.push("/")
         logOut()
         }}>Log Out</MenuItem>
     </Menu>
