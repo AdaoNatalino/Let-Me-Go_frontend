@@ -1,3 +1,11 @@
+Let Me Go! 
+A React app where people can trade (barter) items one for another.
+Outside Libraries such as Material-UI, Paypal and Share.
+
+The project is deployed on : 
+https://let-me-go.netlify.app/
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
