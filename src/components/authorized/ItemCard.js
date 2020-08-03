@@ -113,11 +113,8 @@ export default function ItemCard( { item, user } ) {
         image={ item.image }
         title="Paella dish"
       />
-      {/* <CardContent>
-        <Typography variant="body2" color="textSecondary" component="p">
-         { item.description }
-        </Typography>
-      </CardContent> */}
+ 
+ 
       <CardActions disableSpacing>
 
         {user.username === item.user.username ? null : 
