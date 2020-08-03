@@ -19,12 +19,12 @@ const useStyles = makeStyles((theme) => ({
     maxWidth: 345,
   },
   form: {
-    width: '100%', // Fix IE 11 issue.
+    width: '100%', 
     marginTop: theme.spacing(3),
   },
   media: {
     height: 0,
-    paddingTop: '56.25%', // 16:9
+    paddingTop: '56.25%', 
   },
   expand: {
     transform: 'rotate(0deg)',

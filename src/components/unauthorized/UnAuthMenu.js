@@ -28,7 +28,6 @@ export default function ButtonAppBar() {
         <Toolbar>
 
           <Typography variant="body1" className={classes.title} align="justify">
-          {/* <Typography variant="body2" color="textSecondary" align="center"> */}
 
             <Link href="/" style={{ color: 'white' }}> 
                 LET ME GO!
