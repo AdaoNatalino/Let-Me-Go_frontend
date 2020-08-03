@@ -39,7 +39,7 @@ const useStyles = makeStyles((theme) => ({
     maxWidth: 345,
   },
   form: {
-    width: '100%', // Fix IE 11 issue.
+    width: '100%', 
     marginTop: theme.spacing(3),
   },
   media: {
@@ -102,7 +102,6 @@ export default function ItemCard( { item, user } ) {
         }
         action={
           <IconButton aria-label="settings">
-            {/* <MoreVertIcon /> */}
           </IconButton>
         }
         title={ item.name }
@@ -114,7 +113,7 @@ export default function ItemCard( { item, user } ) {
         title="Paella dish"
       />
  
- 
+
       <CardActions disableSpacing>
 
         {user.username === item.user.username ? null : 
