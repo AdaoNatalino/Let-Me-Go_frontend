@@ -284,13 +284,6 @@ export default function Dashboard({ logOut, userInfo }) {
                 <ListItemText primary="My Trades" />
               </ListItem>
 
-              {/* <ListItem button onClick={ ()=> setRender(RENDER.FRIENDS) }>
-                <ListItemIcon>
-                  <PeopleIcon />
-                </ListItemIcon>
-                <ListItemText primary="Friends" />
-              </ListItem> */}
-
               <ListItem button onClick={ ()=> setRender(RENDER.ITEMS) }>
                 <ListItemIcon>
                   <TableChartIcon />
