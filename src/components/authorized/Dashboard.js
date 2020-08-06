@@ -323,12 +323,9 @@ export default function Dashboard({ logOut, userInfo }) {
                 <UserLogo user={user} />
               </Paper>
             </Grid>
-            {/* Recent Orders */}
             <Grid item xs={12}>
               <Paper className={classes.paper} 
-              // style={{backgroundColor: "black"}}
               >
-                {/* <Orders /> */}
               </Paper>
             </Grid>
           </Grid>
