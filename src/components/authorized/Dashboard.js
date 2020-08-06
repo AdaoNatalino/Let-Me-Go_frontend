@@ -304,9 +304,7 @@ export default function Dashboard({ logOut, userInfo }) {
 
 
           </List>
-        {/* <List>{mainListItems}</List> */}
         <Divider />
-        {/* <List>{secondaryListItems}</List> */}
       </Drawer>
       <main className={classes.content}>
         <div className={classes.appBarSpacer} />
