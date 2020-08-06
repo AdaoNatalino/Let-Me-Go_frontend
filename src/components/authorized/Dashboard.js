@@ -235,11 +235,7 @@ export default function Dashboard({ logOut, userInfo }) {
           >
             Dashboard
           </Typography>
-            {/* <IconButton aria-label="show 4 new mails" color="inherit">
-              <Badge badgeContent={1} color="secondary">
-                <MailIcon />
-              </Badge>
-          </IconButton> */}
+           
             <IconButton aria-label="show 11 new notifications" color="inherit"
             onClick={ ()=> setRender(RENDER.TRADES) }
             >
