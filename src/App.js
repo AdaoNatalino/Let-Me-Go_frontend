@@ -51,7 +51,6 @@ function App() {
             <NotFound404 />
           </Route>
         </Switch>
-    
       </Router>
     </div>
   );
