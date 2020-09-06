@@ -30,6 +30,7 @@ const createNewUser = (userData) => {
           return res;
         })
 }
+
 const logInUser = (userData) => {
   return fetch(URL + `login`, {
       method: "POST",
