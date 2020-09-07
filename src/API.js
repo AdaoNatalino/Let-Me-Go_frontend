@@ -56,7 +56,7 @@ const validateToken = () => {
     .then(res => res.json())
 }
 
-// used to create buttons
+// buttons
 const getAllCategories = () => {
   return authorizedFetch(URL + "categories")
   .then(resp => resp.json())
