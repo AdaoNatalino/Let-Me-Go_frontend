@@ -30,7 +30,7 @@ export default function ButtonAppBar() {
           <Typography variant="body1" className={classes.title} align="justify">
 
             <Link href="/" style={{ color: 'white' }}> 
-                LET ME GO!
+                LET-ME-GO!
             </Link>
 
           </Typography>
